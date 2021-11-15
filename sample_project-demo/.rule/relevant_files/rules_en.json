@@ -1,0 +1,3793 @@
+[
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "",
+		"code": "MSR_2_3",
+		"master_id": "2001",
+		"name": "MSR_2_3",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\ntypedef int used; // type is declared here\n\nint main()\n{\n    used a = 1; // type is used here\n    printf(\"%d\",a);\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\ntypedef int used; // type is declared but not used\n\nint main()\n{\n    printf(\"finished\");\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "",
+		"desc": "A project should not include undefined data types",
+		"details": "#### Abstract\nA project should not include undefined data types\n\n#### Explanation\nAn undefined data type will cause a waste of resources. When reviewing the code, it will also be difficult to determine whether the data type is not used due to an error in the programming process or if it is just extra code. "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_2_6",
+		"master_id": "2002",
+		"name": "Unused label in function not allowed",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    int i = 5;\n    goto lab1; // label used\n    if (i != 5) i = 5;\nlab1: // label declared\n    return i;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    int i = 5;\n    if (i != 5) i = 5;\nlab1: // unused label declared\n    return i;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, unused tags are declared in ${so.func}.",
+		"desc": "Unused tags cannot be declared in the function",
+		"details": "#### Abstract\nUnused tags cannot be declared in the function\n\n#### Explanation\nThe reviewer of the code cannot judge whether the unused tag is redundant or is not used due to negligence, so the unused label cannot be declared. "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_2_7",
+		"master_id": "2003",
+		"name": "All declared parameters must be used",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint Addtion(int a,int b,int c);\n\nint main()\n{\n    printf(\"%d\",Addtion(1,2,3));\n    return 0;\n}\nint Addtion(int a,int b,int c)\n{\n    return a+b+c; // every parameter is used\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint Addtion(int a,int b,int c);\n\nint main()\n{\n    printf(\"%d\",Addtion(1,2,3));\n    return 0;\n}\n // three parameters are defined\nint Addtion(int a,int b,int c)\n{\n    return a+b; // only two of them are used\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, unused parameters appear in ${so.func}.",
+		"desc": "Unused parameters should not appear in the function",
+		"details": "#### Abstract\nUnused parameters should not appear in the function\n\n#### Explanation\nThe function should use all its parameters. If the function does not use all its parameters, the implementation will not match the declaration of the function. "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_1",
+		"master_id": "2004",
+		"name": "All external identifiers must be unique up to 31 characters",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint main()\n{\n    // the first 31 characters are distinct\n    int a_non_compliant_example_a = 1;\n    int a_non_compliant_example_b = 2; \n    int a;\n    a = a_non_compliant_example_a + a_non_compliant_example_b;\n    printf(\"%d\\n\",a);\n    return 0;\n} "
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint main()\n{\n    // the first 31 characters are not distinct\n    int this_is_a_non_compliant_example_a = 1;\n    int this_is_a_non_compliant_example_b = 2; \n    int a;\n    a = this_is_a_non_compliant_example_a + this_is_a_non_compliant_example_b;\n    printf(\"%d\\n\",a);\n    return 0;\n} "
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, external identifiers are not unique.",
+		"desc": "The external identifier must be distinguishable",
+		"details": "#### Abstract\nThe external identifier must be distinguishable\n\n#### Explanation\nIn the C99 standard, external identifiers should be distinguished by at least the first 31 characters. The external identifiers must be distinct with respect to the first 31 characters, so they are deemed unique by the compiler. "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_2",
+		"master_id": "2005",
+		"name": "Identifiers of same scope and name space must be unique",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n// this example have two identifiers, first 31 characters are the same\nextern int this_is_a_non_compliant_example_a = 1; // first identifier, global scope\n\nint main()\n{\n    int a;\n    int this_is_a_non_compliant_example_b = 2; // two identifiers are defined in local scope\n    a = 1 + this_is_a_non_compliant_example_b;\n    printf (\"%d\\n\",a);\n    return 0;\n} "
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n// this example have two identifiers, first 31 characters are the same\nextern int a_non_compliant_example_a = 1;\nextern int a_non_compliant_example_b = 2; // two indistinct identifiers are defined in the same scope\n\nint main()\n{\n    int a;\n    a = 1 + a_non_compliant_example_b;\n    printf(\"%d\\n\",a);\n    return 0;\n} "
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, identifiers are not distinguishable.",
+		"desc": "Identifiers declared in the same scope and name space should be distinguishable",
+		"details": "#### Abstract\nIdentifiers declared in the same scope and name space should be distinguishable\n\n#### Explanation\nIn the same scope, the first 31 characters of different identifiers should not be exactly the same to ensure they are distinguishable."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_3",
+		"master_id": "2006",
+		"name": "Identifiers in inner and outer scope must be distinct",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint a = 3; // identifier defined, outer scope\n\nint main()\n{\n    int b; // identifier defined, inner scope, different form the outer one\n    b = 4;\n    printf(\"%d\",b);\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint a = 3; // identifier defined, outer scope\n\nint main()\n{\n    int a; // identifier defined, inner scope, covering the outer one\n    a = 4;\n    printf(\"%d\",a);\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, identifiers are not distinct.",
+		"desc": "The identifier of the internal scope should be different from the identifier of the external scope",
+		"details": "#### Abstract\nThe identifier of the internal scope should be different from the identifier of the external scope\n\n#### Explanation\nWhen defining variables in the internal scope, you should avoid having the same name as the external scope to prevent creating ambiguity."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_6",
+		"master_id": "2007",
+		"name": "typedef name should be a unique identifier",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\ntypedef int my_name; // unique typedef declared\n\nint main()\n{\n    int my_name_2 = 1; // unique variable declared \n    printf(\"%d\",my_name_2);\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\ntypedef int my_name; // typedef declared\n\nint main()\n{\n    int my_name = 1; // variable declared, same identifier\n    printf(\"%d\",my_name);\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the typedef identifier is not unique.",
+		"desc": "A typedef identifier must be unique",
+		"details": "#### Abstract\nA typedef identifier must be unique\n\n#### Explanation\nUnless the alias is defined in the header file, and the header file is included, the alias defined by the typedef used must be unique in all namespaces."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_7",
+		"master_id": "2008",
+		"name": "Tag names should be a unique identifier",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstruct my_name // unique tag declared\n{\n    int a;\n    int b;\n};\n\nint main()\n{\n    int my_name_2 = 1; // unique variable declared\n    printf(\"%d\",my_name_2);\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstruct my_name // tag declared\n{\n    int a;\n    int b;\n};\n\nint main()\n{\n    int my_name = 1; // variable declared, same identifier\n    printf(\"%d\",my_name);\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, tag names are not unique identifiers.",
+		"desc": "A tag must be unique",
+		"details": "#### Abstract\nA tag must be unique\n\n#### Explanation\nUnless the tag is defined in the header file, and the header file is included, the tag used must be unique in all namespaces."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_6_1",
+		"master_id": "2009",
+		"name": "Bit field types must not be builtin types",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstruct str\n{\n    signed int a:2;   // signed int permitted\n    unsigned int b:2; // unsigned int permitted\n};\n\nint main()\n{\n    printf(\"finished\");\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstruct str\n{\n    int a:2;   // plain int not permitted\n    float b:2; // float is inappropriate \n};\n\nint main()\n{\n    printf(\"finished\");\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, bit fields are not appropriate data types.",
+		"desc": "Bit fields must be declared as appropriate data types",
+		"details": "#### Abstract\nBit fields must be declared as appropriate data types\n\n#### Explanation\nWhen declaring a bit field, it must be declared as one of the specified data types either signed or unsigned. It cannot be omitted in the declaration."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_6_2",
+		"master_id": "2010",
+		"name": "Single-bit named field must be unsigned",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstruct str\n{\n    unsigned int a:1;   // single-bit bit field declared unsigned\n};\n\nint main()\n{\n    printf (\"finished\") ;\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstruct str\n{\n    signed int a:1;   // single-bit bit field declared signed\n};\n\nint main()\n{\n    printf(\"finished\");\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the single-bit named field is signed data.",
+		"desc": "A bit field that only occupies one bit cannot be signed data",
+		"details": "#### Abstract\nA bit field that only occupies one bit cannot be signed data\n\n#### Explanation\nSince signed data requires the first sign bit, a bit field that only occupies one bit is not allowed to be defined as a signed data type."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_7_4",
+		"master_id": "2011",
+		"name": "String literal must only be assigned to a const char pointer",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int foo (const char *a);\nextern int foo2 (const char *b);\n\nint func()\n{\n    const char *str = \"string\"; // str is not const-qualified\n    foo ( \"string\" );\n    foo2 ( \"string\" ); // string can not be modified\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int foo (char *a);\nextern int foo2 (char *b);\n\nint func()\n{\n    char *str = \"string\"; // str is not const-qualified\n    foo ( \"string\" );\n    foo2 ( \"string\" ); // may be modified by foo\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, a string literal is not assigned to char type.",
+		"desc": "Always assign a string literal through a const qualified pointer to char type",
+		"details": "#### Abstract\nAlways assign a string literal through a const qualified pointer to char type\n\n#### Explanation\nSince the constant string is stored in the static storage area, the modification operation will cause an error. Only the constant string can be copied to the pointer to the constant string to prevent its modification operation."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_4",
+		"master_id": "2012",
+		"name": "External object, when defined must be the same as a visble declaration.",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int func(int a); // extern function declared\n\nint func(int a) // extern compatible funtion defined\n{\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int func(int a); // extern function declared\n\nint func(int a, int b) // parameters different\n{\n    return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the external object is not compatible with its declaration.",
+		"desc": "Defining objects that have external linkage should be compatible with their declarations",
+		"details": "#### Abstract\nDefining objects that have external linkage should be compatible with their declarations\n\n#### Explanation\nWhen defining an object or function with external linkage, the data type, number of parameters, etc. of the object or function must be compatible with the external declaration."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_8",
+		"master_id": "2013",
+		"name": "Objects with internal linkage should be declared static ",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstatic int func (int a); // function with internal linkage declared\n\nstatic int func (int a) // function defined with \"static\"\n{\n    return a;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstatic int func (int a); // function with internal linkage declared\n\nint func (int a) // function defined without \"static\"\n{\n    return a;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the object with internal linkage is not declared static.",
+		"desc": "The static specifier should be added to the object that has internal linkage",
+		"details": "#### Abstract\nThe static specifier should be added to the object that has internal linkage\n\n#### Explanation\nWhen declaring an object or function with internal linkage, a static specifier must be added to ensure the declaration is correct. "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_9",
+		"master_id": "2014",
+		"name": "An object should be defined at block scope if its identifier only appears in a single function",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int foo (int *a);\nextern void foo2 ( void );\n\nint count ( void )\n{\n    static int num = 0; // object declared at block scope\n    num++; // object appears only in this function\n    return num;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int foo(int *a);\nextern void foo2( void );\nstatic int num = 0; // object declared, global scope\n\nint count( void )\n{\n    num++; // object appears only in this function\n    return num;\n}\n\nextern void foo2( void )\n{\n    foo(&num); // object may be modified at outer scope\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the object is not defined in the scope in which it appears.",
+		"desc": "The object should only be defined in the scope in which it appears",
+		"details": "#### Abstract\nThe object should only be defined in the scope in which it appears\n\n#### Explanation\nWhen an object only functions in a certain scope, it should be defined in that scope to prevent other scopes from changing its value."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_10",
+		"master_id": "2015",
+		"name": "Inline function should have a static declaration",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstatic inline int func( void ); // inline function declared with internal linkage\nint func2( void );\n\nint func2( void )\n{\n    func();\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern inline int func( void ); // inline function declared with external linkage\nint func2( void );\n\nint func2( void )\n{\n    func();\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, inline function ${so.func} does not have static declaration.",
+		"desc": "A static storage class should be used to declare inline functions",
+		"details": "#### Abstract\nA static storage class should be used to declare inline functions\n\n#### Explanation\nReferencing an inline function of an external linkage may affect the execution time, so the inline function should be declared with a static storage class."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_11",
+		"master_id": "2016",
+		"name": "When an array with external linkage is declared, its size should be explicitly specified",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int array[20]; // declare array with external linkage and its size\nint foo ( void ) ;\n\nint foo ( void )\n{\n    return array[10];\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nextern int array[]; // declare array with external linkage but without size\nint foo( void );\n\nint foo ( void )\n{\n    return array[10]; // 10 may be bigger than actual array size\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the size of the array of external linkage is not explicitly specified.",
+		"desc": "The size of the array of external linkage must be explicitly specified",
+		"details": "#### Abstract\nThe size of the array of external linkage must be explicitly specified\n\n#### Explanation\nIn order to ensure consistency and determine the boundaries of the storage area, the size of the array must be determined when declaring an externally linked array."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_12",
+		"master_id": "2017",
+		"name": "An implicitly specified enum constant list should be unique",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n// all implicitly-specified enmueration constants is unique\ntypedef enum weekday {thu = 4, fri, sat = 6, sun = 6};"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n// implicitly-specified enmueration sat is not unique\ntypedef enum weekday {thu = 4, fri, sat, sun = 6};"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the implicitly specified enum constant list is not unique.",
+		"desc": "The value of the enumeration member assigned by default must be unique",
+		"details": "#### Abstract\nThe value of the enumeration member assigned by default must be unique\n\n#### Explanation\nIn order to avoid the incorrect repetition of the value of the enumeration member, the value of the enumeration member should be "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_13",
+		"master_id": "2018",
+		"name": "A pointer should point to a const-qualified type whenever possible",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func (const char *ptr);\n\nvoid func (const char *ptr) // pointer declared const-qualified\n{\n    // ptr pointed to is not modified\n    printf (\"%c\", *ptr);\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func (char *ptr);\n\nvoid func (char *ptr) // pointer declared is not const-qualified\n{\n    // ptr pointed to is not modified, it should be const-qualified\n    printf (\"%c\", *ptr);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the pointer is not declared with const qualifier.",
+		"desc": "Try to declare pointers with const qualifier",
+		"details": "#### Abstract\nTry to declare pointers with const qualifier\n\n#### Explanation\nA pointer should always point to the same underlying qualified type. Mixed type assignments should be always explicitly casted."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_14",
+		"master_id": "2019",
+		"name": "Restrict qualifier should not be used",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n// restrict type qualifier removed\nextern void func (int * ptr1, int * ptr2);\nvoid func2 (void);\n\nvoid func2(void)\n{\n    int i;\n    int *a,*b;\n    a = b = &i;\n    func (a, b);\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n// restrict-qualified parameters declared\nextern void func (int * restrict ptr1, int * restrict ptr2);\nvoid func2 (void);\n\nvoid func2(void)\n{\n    int i;\n    int *a,*b;\n    a = b = &i;\n    // overlap memory areas\n    func (a, b);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the restrict type qualifier is used",
+		"desc": "Try to avoid using the restrict type qualifier",
+		"details": "#### Abstract\nTry to avoid using the restrict type qualifier\n\n#### Explanation\nIn order to prevent problems such as overlapping of the areas pointed to by the pointer, the restrict type qualifier should be avoided as much as possible."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_9_3",
+		"master_id": "2020",
+		"name": "Arrays should not be partially initialized",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func ( void )\n{\n    int a[10] = {0}; // array totally initialized\n    return a[9]; // a[9] is "
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func ( void )\n{\n    int a[10] = {0, 0, 0}; // array only initialized three elements\n    return a[9]; // a[9] is still unknown value\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, arrays are partially initialized",
+		"desc": "Arrays must not be partially initialized",
+		"details": "#### Abstract\nArrays must not be partially initialized\n\n#### Explanation\nIn order to ensure that there are no unprocessed values in the array after explicitly initializing the array, all elements in the array must also be explicitly initialized."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_9_4",
+		"master_id": "2021",
+		"name": "Multiple initialization of elements in an object is not allowed",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func( void )\n{\n    // all elements initialized once\n    int arr[3] = { [ 0 ] = 3, [ 1 ] = 2, [ 2 ] = 1};\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func( void )\n{\n    // a[0] initialized twice\n    int arr[3] = { [ 0 ] = 3, [ 1 ] = 2, [ 2 ] = 1, [ 0 ] = 4};\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the elements in the object have been initialized more than once",
+		"desc": "The elements in the object can only be initialized once",
+		"details": "#### Abstract\nThe elements in the object can only be initialized once\n\n#### Explanation\nWhen initializing arrays and structures that are not in the default order, you must not initialize the same element(s) repeatedly."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_9_5",
+		"master_id": "2022",
+		"name": "If initializers are used in an array, its size must be known",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func ( void );\n\nint func( void )\n{\n    // arr have designated initializer with size specified explicitly\n    int arr[10] = { [ 5 ] = 1};\n    return arr[ 9 ];\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func ( void );\n\nint func( void )\n{\n    // flexible array declared using designated initializer\n    int arr[] = { [ 5 ] = 1};\n    // array may not have the element arr[9]\n    return arr[ 9 ];\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the size of the array that uses explicit initializer is not declared",
+		"desc": "The size of the array must be declared if an explicit initializer is used on the array",
+		"details": "#### Abstract\nThe size of the array must be declared if an explicit initializer is used on the array\n\n#### Explanation\nIn order to determine the maximum number of elements in the array, when this array is explicitly initialized, the array size must be specified."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_3",
+		"master_id": "2023",
+		"name": "Down casting of an expression is not allowed",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    short short_a;\n    int b;       // b declared as int for illustration\n    b = short_a; // short_a assigned to wider essential type object\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    short short_a;\n    long int b;\n    short_a = b; // c assigned to narrower essential type\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} includes down casting of an expression",
+		"desc": "You cannot assign values to objects with different essential types",
+		"details": "#### Abstract\nYou cannot assign values to objects with different essential types\n\n#### Explanation\nIt is erroneous to assign the value of an expression to an object with an inappropriate type or is not large enough to represent the data type of the value."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_4",
+		"master_id": "2024",
+		"name": "operands and type conversion",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int int_var;\n    char char_var;\n    // int 1 added to char char_var, permitted\n    char_var += 1;\n    // int 1 added to int int_var, same type\n    int_var += 1;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int int_var;\n    char char_var;\n    // float 1.0f added to char char_var, not permitted\n    char_var += 1.0f;\n    // float 1.0f added to int int_var, differnt type\n    int_var += 1.0f;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the two operands of the same operator are not of the same essential type category",
+		"desc": "The two operands of the same operator must be of the same essential type category",
+		"details": "#### Abstract\nThe two operands of the same operator must be of the same essential type category\n\n#### Explanation\nUsing binary or ternary operands for two different types of operands may cause some information of the resulting value to be lost. Therefore, in general, the two operands of the uniform operator should be of the same type."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_5",
+		"master_id": "2025",
+		"name": "Same essential type within an expression ",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    char char_var;\n    bool bool_var;\n    // int can be cast to char\n    char_var = ( char ) 1;\n    // int 1 can be cast to bool by exception\n    bool_var = ( bool ) 1;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    char char_var;\n    bool bool_var;\n    // expression 1.0f cast to an narrower type char\n    char_var = ( char ) 1.0f;\n    // char_var cast to narrower type bool\n    bool_var = ( bool ) char_var;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the value of the expression is converted to an inappropriate essential type",
+		"desc": "The value of the expression cannot be converted to an inappropriate essential type",
+		"details": "#### Abstract\nThe value of the expression cannot be converted to an inappropriate essential type\n\n#### Explanation\nCast conversion between two inappropriate types may result in the loss or change of data, so the value of the expression cannot be cast to an inappropriate type."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_6",
+		"master_id": "2026",
+		"name": "Assignment from a composite expression should remain the same size ",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    long long_var;\n    short short_a, short_b;\n    short_a = 1\n    short_b = 1;\n    long_var = ( long )short_a + short_b; // explicitly converted to long\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    long int long_var;\n    short int short_a, short_b;\n    short_a = short_b = 1;\n    long_var = short_a + short_b; // implicitly converted to long\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the use of composite expressions to assign values to objects of larger data types does not use explicit conversions",
+		"desc": "The use of composite expressions to assign values to objects of larger data types should use explicit conversions",
+		"details": "#### Abstract\nThe use of composite expressions to assign values to objects of larger data types should use explicit conversions\n\n#### Explanation\nExplicit conversion must be used when converting the value of a composite expression to a data type with more storage space and assigning it to an object."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_7",
+		"master_id": "2027",
+		"name": "For composite expressions, any up casting on either side is not allowed",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    short int short_a, short_b;\n    long int long_a, long_b;\n    long_a = 1;\n    short_a = short_b = 2;\n    long_b = ( ( long ) short_a * short_b ) * long_a; // explicitly converted to long\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    short int short_a, short_b;\n    long int long_a, long_b;\n    long_a = 1;\n    short_a = short_b = 2;\n    long_b = (short_a * short_b) * long_a; // implicitly converted to long\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, an explicit conversion is not used when a composite expression is converted to a larger data type as an operand",
+		"desc": "An explicit conversion is used when a composite expression is converted to a larger data type as an operand",
+		"details": "#### Abstract\nAn explicit conversion is used when a composite expression is converted to a larger data type as an operand\n\n#### Explanation\nWhen a composite expression is used as one of the operands of an operator and needs to be converted to a larger data type, explicit conversion must be used."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_8",
+		"master_id": "2028",
+		"name": "Composite expression cannot be up casted",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    float float_a, float_b;\n    int int_var;\n    float_a = float_b = 1.0f;\n    int_var = ( int ) float_a + ( int ) float_b; // float_a and float_b casted to type int\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    float float_a, float_b;\n    int int_var;\n    float_a = float_b = 1.0f;\n    int_var = ( int ) ( float_a + float_b ); // casted to inappropriate type int\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the value of a composite expression is cast to an inappropriate data type",
+		"desc": "The value of a composite expression cannot be cast to an inappropriate data type",
+		"details": "#### Abstract\nThe value of a composite expression cannot be cast to an inappropriate data type\n\n#### Explanation\nThe data type cast conversion may cause the loss or change of data."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_2",
+		"master_id": "2029",
+		"name": "No conversion of pointer to incomplete type convert to any other type",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nunion uni\n{\n    int i;\n    char c;\n}; // union declared\nvoid func ( void );\n\nvoid func ( void )\n{\n    union uni union_var;\n    union_var.i =1;\n    int *ptr_int;\n    // ptr_int point to union_var.i\n    ptr_int = &union_var.i;\n    ptr_int = ( void * )ptr_union; // also allowed by exception\n\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nunion uni; // incomplete type declared\nvoid func ( void );\n\nvoid func ( void )\n{\n    union uni *ptr_union;\n    int *ptr_int; \n    // ptr_int converted to pointer to incomplete type\n    ptr_union = ( union uni * ) ptr_int;\n    // ptr_union (incomplete type) converted to int pointer\n    ptr_int = ( int * )ptr_union;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, pointers to incomplete types are converted to pointers of other types",
+		"desc": "Pointers to incomplete types cannot be converted to pointers of other types and vice versa ",
+		"details": "#### Abstract\nPointers to incomplete types cannot be converted to pointers of other types and vice versa \n\n#### Explanation\nType conversion operations between pointers to incomplete types may destroy the encapsulation of incomplete types, so pointers of incomplete types cannot be converted to pointers of other types."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_3",
+		"master_id": "2030",
+		"name": "No casting between pointers of different types",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int *ptr_int;    // pointer to int declared\n    char *ptr_char;  // pointer to char declared\n    *ptr_char = NULL;\n    *ptr_int = NULL; // pointers point to null\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int *ptr_int;                 // pointer to int declared\n    char *ptr_char;               // pointer to char declared\n    ptr_int = ( int * ) ptr_char; // convert to int type pointer\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, pointers are cast to pointers of other types",
+		"desc": "Pointers cannot be cast to pointers of other types",
+		"details": "#### Abstract\nPointers cannot be cast to pointers of other types\n\n#### Explanation\nCasting one type of pointer to another type of pointer may be incorrectly aligned causing undefined behavior, so you cannot convert pointers to other types of pointers."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_4",
+		"master_id": "2031",
+		"name": "No conversion of int type to pointer",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int *ptr_int;\n    int int_a, int_b;\n    int_a = 1;\n    ptr_int = &int_a; // ptr_int point to int_a\n    int_b = *ptr_int; // *ptr_int assigned to int_b\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int *ptr_int;\n    int int_a, int_b;\n    int_a = 1;\n    ptr_int = ( int * ) int_a; // convert int to pointer\n    int_b = ( int ) ptr_int;   // convert pointer to type int\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, there is conversion between pointers and integers",
+		"desc": "Avoid the conversion between pointers and integers",
+		"details": "#### Abstract\nAvoid the conversion between pointers and integers\n\n#### Explanation\nImplementing the conversion between pointers and integers may result in data overflow of the integers or mis-alignment of the pointers. Avoid conversion between pointers and integers as much as possible."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_5",
+		"master_id": "2032",
+		"name": "No conversion from pointers to void into pointer to object",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    void *ptr_void; // void pointer declared\n    int *ptr_int;   // int pointer declared\n    int int_var;\n    ptr_int = &int_var;\n    // convert int pointer into void pointer\n    ptr_void = ( void * ) ptr_int;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    void *ptr_void; // void pointer declared\n    int *ptr_int;   // int pointer declared\n    int int_var;\n    ptr_void = &int_var;\n    // convert void pointer into int pointer\n    ptr_int = ( int * ) ptr_void;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, null pointers are coverted to pointers to objects",
+		"desc": "Avoid converting null pointers to pointers to objects",
+		"details": "#### Abstract\nAvoid converting null pointers to pointers to objects\n\n#### Explanation\nIn order to avoid pointer errors that may occur during type conversion, you should avoid converting null type pointers to pointers to objects. This can result in an undefined behavior. "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_6",
+		"master_id": "2033",
+		"name": "No casting between a void pointer and an arithmatic type",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n#define ZERO 0\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    void *ptr_void;\n    int int_var;\n    // ptr_void point to the address of int_var\n    ptr_void = &int_var;\n    ptr_void = (void *)ZERO;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    void *ptr_void;\n    int int_var;\n    // convert int_var to void pointer\n    ptr_void = ( void * ) int_var;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, there is null type pointer and arithmetic type conversion",
+		"desc": "Cannot perform a null type pointer and arithmetic type conversion",
+		"details": "#### Abstract\nCannot perform a null type pointer and arithmetic type conversion\n\n#### Explanation\nDuring data conversion, data type conversion between null pointers and arithmetic types may cause unalignment with undefined behavior during data conversion."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_7",
+		"master_id": "2034",
+		"name": "No casting between void pointer and a non-int arithmatic type",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    char char_a, char_b;\n    char *ptr_char;\n    char_a = "
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    char char_a, char_b;\n    char *ptr_char;\n    char_a = "
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, there is casting between pointers to objects and non-integer arithmetic types",
+		"desc": "Cannot cast pointers to objects and non-integer arithmetic types",
+		"details": "#### Abstract\nCannot cast pointers to objects and non-integer arithmetic types\n\n#### Explanation\nIn order to prevent undefined behavior during the type conversion process, the data type conversion between the pointer to the object and the non-integer arithmetic is not allowed. "
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_8",
+		"master_id": "2035",
+		"name": "Const or volatile pointers to pointed should not be cast away ",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <malloc.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    // const pointer declared\n    int * const ptr_const = ( int *) malloc ( sizeof ( int ) );\n    int *ptr_int;\n    // ptr_int point to the address of ptr_const\n    ptr_int = ptr_const;\n    // more code that may change ptr_const\n    // ...\n    \n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <malloc.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    volatile int *p_volatile;\n    // pointer to const declared\n    const int * ptr_const = ( int *) malloc ( sizeof ( int ) );\n    int *ptr_int;\n    // const qualifier removed in a cast\n    ptr_int = ( int * ) ptr_const;\n    ptr_int = (int *) p_volatile;\n    // more code that may change ptr_const\n    // ...\n    \n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, pointer data type cast removes const or volatile qualifiers",
+		"desc": "Pointer data type cast cannot remove const or volatile qualifiers",
+		"details": "#### Abstract\nPointer data type cast cannot remove const or volatile qualifiers\n\n#### Explanation\nThe const and volatile qualifiers in the definition cannot be removed when the pointer data type is converted. This may cause errors in the reading and writing process of the pointer."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_9",
+		"master_id": "2036",
+		"name": "int null pointer const must be the NULL macro",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int *int_ptr = NULL; // ptr_int point to NULL\n    // NULL appear as an operand with the other operand a pointer\n    if ( int_ptr != (int *)NULL )\n    {\n        *int_ptr = NULL;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    int *int_ptr = 0; // 0 assigned to ptr_int\n    // 0 appear as an operand with the other operand a pointer\n    if ( int_ptr != 0 )\n    {\n        *int_ptr = NULL;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, a null integer pointer not only points to the macro NULL",
+		"desc": "A null integer pointer can only point to the macro NULL",
+		"details": "#### Abstract\nA null integer pointer can only point to the macro NULL\n\n#### Explanation\nAn integer constant expression with the value 0 should be derived from expansion of the macro NULL if it appears as the value being assigned to a pointer or an operand of equal/not-equal, or operand of a trigraph."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_12_2",
+		"master_id": "2037",
+		"name": "Shift amount of shift operator must be smaller than the bit size of operand",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdint.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    uint16_t uint16_var = 2;\n    uint32_t uint32_var;\n    // 17 is in the range 0 to the size of uint16_var\n    uint32_var = uint32_var << 17;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdint.h>\n\nvoid func ( void );\n\nvoid func ( void )\n{\n    uint16_t uint16_var = 2;\n    // 17 is bigger than the size of uint16_var\n    uint16_var = uint16_var << 17;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the right operand of the shift operator is not taken from zero to one less than the number of bits in the left operand",
+		"desc": "The right operand of the shift operator should be taken from zero to one less than the number of bits in the left operand",
+		"details": "#### Abstract\nThe right operand of the shift operator should be taken from zero to one less than the number of bits in the left operand\n\n#### Explanation\nThe right operand of the shift operator should be a positive integer, the value range is from zero to one less than the number of digits in the left operand. Any value beyond this range will cause undefined behavior."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_12_3",
+		"master_id": "2038",
+		"name": "Comma operator not allowed",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdint.h>\n\nstatic char a[ 10 ];\nvoid func ( void );\n\nvoid func ( void )\n{\n    int i;\n    char *p;\n    // same effect achieved by other mean\n    p = &a[ 0 ];\n    for ( i = 0; i < 10 ; ++i)\n    {\n        *p++ = i;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdint.h>\n\nstatic char a[ 10 ];\nvoid func ( void );\n\nvoid func ( void )\n{\n    int i;\n    char *p;\n    // comma operator hard the readability of code\n    for ( i = 0, p = &a[ 0 ]; i < 10 ; ++i, *p++ = i);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the comma operator is used",
+		"desc": "Try not to use the comma operator",
+		"details": "#### Abstract\nTry not to use the comma operator\n\n#### Explanation\nSince using the comma operator will reduce the readability of the code, try to avoid using the comma operator."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_12_4",
+		"master_id": "2039",
+		"name": "Const expression should not cause unsigned wrap-around",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n#define MAXIMUM 0xffffffffu // maximum value of unsigned int\n\nconst unsigned int const_int = 1;\nvoid func( void );\n\nvoid func( void )\n{\n    unsigned int uint_var;\n    // 0xffffffff assigned to long_long_var\n    uint_var = MAXIMUM;\n    // uint_var + 1 and uint_var + const_int is not a constant expression\n    uint_var = uint_var + 1;\n    uint_var = uint_var + const_int;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\n#define MAXIMUM 0xffffffffu // value of unsigned int (assume int is 32 bits)\n#define ONE     0x1u\nvoid func( void );\n\nvoid func( void )\n{\n    unsigned int uint_var;\n    // the value of MAXIMUM + 1 lead to wrap-around\n    uint_var = MAXIMUM + ONE;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, a constant expression causes an unsigned integer wrap-around",
+		"desc": "A constant expression should not cause an unsigned integer wrap-around",
+		"details": "#### Abstract\nA constant expression should not cause an unsigned integer wrap-around\n\n#### Explanation\nTo prevent wrap-around, the value range of the unsigned integer constant expression should be in the range of zero to the maximum value that the unsigned integer can represent."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_13_1",
+		"master_id": "2040",
+		"name": "Initializer lists should not contain persistent side effects",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func( void );\n\nvoid func( void )\n{\n    int x = 0;\n    // array initialized with no side effect\n    int arr[2] = { 1, 2 };\n    // more code may call x\n    // ...\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func( void );\n\nvoid func( void )\n{\n    int x = 0;\n    // object x modified due to side effect\n    int arr[2] = { ++x, ++x };\n    // more code may call x\n    // ...\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the initialization list has side effects",
+		"desc": "The initialization list should not have side effects",
+		"details": "#### Abstract\nThe initialization list should not have side effects\n\n#### Explanation\nIn order to avoid causing errors in the initialization content and side effects affecting the operation of the program, operations that produce side effects such as assigning other parameters to other parameters, should not be performed in the initialization list."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_13_2",
+		"master_id": "2041",
+		"name": "Persistent side effect expressions should be the same",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    int a = 6;\n    // the value will sure to be -60\n    a -= a*a;\n    a += a;\n    return a;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    int a = 6;\n\n    a += a -= a*a;\n    return a;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, the value of ${so.func} is not deterministic in all possible execution orders.",
+		"desc": "The values and side effects of all expressions in the execution order must be the same",
+		"details": "#### Abstract\nThe values and side effects of all expressions in the execution order must be the same\n\n#### Explanation\nSince the expression may have multiple execution orders, the design expression should ensure that the value of the expression and its side effects are the same in all possible execution orders."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_13_3",
+		"master_id": "2042",
+		"name": "Side effect free expr (except ++, --)",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    int int_a, int_b, int_c;\n    int_a = int_b = 1;\n    // make the code more readable by this mean\n    ++int_a;\n    int_c = int_a * int_b;\n    int_b--;\n    return int_c;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    int int_a, int_b, int_c;\n    int_a = int_b = 1;\n    // the complex expression impairs the readability\n    int_c = ++int_a * int_b--;\n    return int_c;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the increment (++) or decrement (--) operators have additional side effects",
+		"desc": "The increment (++) or decrement (--) operators cannot have additional side effects",
+		"details": "#### Abstract\nThe increment (++) or decrement (--) operators cannot have additional side effects\n\n#### Explanation\nAvoid mixing increment or decrement operators with other operators in expressions, including function calls, as this will cause an undefined behavior. Doing so will impair readability of the code."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_13_4",
+		"master_id": "2043",
+		"name": "Assign operators inside an expression ",
+		"severity": "H",
+		"compliance": "A",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func( void );\n\nvoid func( void )\n{\n    bool bool_var;\n    bool_var = true;\n    // == is not an assignment operator\n    while (bool_var == true)\n    {\n        // some code that change bool_var\n        // ...\n    }\n    \n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func( void );\n\nvoid func( void )\n{\n    bool bool_var;\n    bool_var = true;\n    // the value of assignment opreator used as condition\n    while (bool_var = true)\n    {\n        // some code that change bool_var\n        // ...\n    }\n    \n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the result of the assignment operator is used",
+		"desc": "The result of the assignment operator cannot be used",
+		"details": "#### Abstract\nThe result of the assignment operator cannot be used\n\n#### Explanation\nThe result of the assignment operator should not be used since it introduces additional side-effects. Doing so also impairs readability of the code."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_13_5",
+		"master_id": "2044",
+		"name": "The right operand of the && and || operators should not contain persist side effect",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstatic int int_a;\nvoid func( void );\nint func2( void );\nbool return_true( void );\n\nvoid func( void )\n{\n    int int_b;\n    \n    // right operand do not have side effect\n    if( return_true() || int_b == func2() );\n    // more code that may read int_a\n    // ...\n}\n\nint func2( void )\n{\n    return int_a + 1; // do not have side effect\n}\n\nbool return_true( void )\n{\n    return true;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nstatic int int_a;\nvoid func( void );\nint func2( void );\nbool return_true( void );\n\nvoid func( void )\n{\n    int int_b;\n    \n    // int_a is not modified as intended\n    if( return_true() || int_b == func2() );\n    // more code that may read int_a\n    // ...\n}\n\nint func2( void )\n{\n    int_a++; // side effect: int_a is modified\n    return int_a;\n}\n\nbool return_true( void )\n{\n    return true;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the right operand of the && and || operators have side effects",
+		"desc": "The right operand of the && and || operators cannot have side effects",
+		"details": "#### Abstract\nThe right operand of the && and || operators cannot have side effects\n\n#### Explanation\nThe evaluation of the right hand operand of the && and || operators is conditional on the value of the left-hand operand. The right hand operand"
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"language": "c",
+		"code": "MSR_13_6",
+		"master_id": "2045",
+		"name": "The operand of sizeof operator should not have potential side effects",
+		"severity": "H",
+		"compliance": "M",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func( void );\n\nvoid func( void )\n{\n    int int_a, int_b;\n\n    // the operand do not have side effect\n    int_a = sizeof( int_b );\n    int_b++; // int_b modified as intended\n    // some code that may read int_b\n    // ...\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func( void );\n\nvoid func( void )\n{\n    int int_a, int_b;\n    \n    // int_b is not modified as intended\n    int_a = sizeof( int_b++ );\n    // some code that may read int_b\n    // ...\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the operand of sizeof operator has persistent side effects",
+		"desc": "The operand of sizeof operator cannot have persistent side effects",
+		"details": "#### Abstract\nThe operand of sizeof operator cannot have persistent side effects\n\n#### Explanation\nSince sizeof operator does not necessarily execute the expression in its operand, the operand of sizeof must not produce side effects."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_18_4",
+		"master_id": "2047",
+		"name": "Pointer arithmatic should not be used, except for ++ and --",
+		"severity": "L",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    int *ptr;\n    ptr = arr;\n    ptr++;  // ++ operator is allowed\n    ptr[1] = 0;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    int *ptr;\n    ptr = arr;\n\n    * (ptr + 1) = 0; // Using + in pointer arithmatic is confusing\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, pointer arithmatic is used, except for ++ and --",
+		"desc": "Pointer arithmatic should not be used, except for ++ and --",
+		"details": "#### Abstract\nPointer arithmatic should not be used, except for ++ and --\n\n#### Explanation\nPointer arithmetic is confusing to the novice programmers. The expression ptr+1 may be mistakenly interpreted as adding one byte to the address held in ptr."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_18_8",
+		"master_id": "2048",
+		"name": "Variable length array types should not be used",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid foo(int n) {\n    int arr[n];\n}\n\nvoid func() {\n    foo(-1);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, variable length array types are used",
+		"desc": "Variable length array types should not be used",
+		"details": "#### Abstract\nVariable length array types should not be used\n\n#### Explanation\nThe use of variable-length array types would make it impossible to determine statically the amount of memory that must be reserved for a stack"
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_19_2",
+		"master_id": "2049",
+		"name": "Union should not be used",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <string.h>\n\nstruct Foo {\n    int i;\n    float f;\n    char str[10];\n};\n\nvoid func() {\n    struct Foo data;\n\n    data.i = 5;\n    data.f = 10.5;\n    strcpy(data.str, \"string\");\n\n    // Use struct instead of union to keep everything\n    printf(\"%d\\n\", data.i);\n    printf(\"%f\\n\", data.f);\n    printf(\"%s\\n\", data.str);\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\ntypedef union UnionT\n{\n  int    i;\n  char   c;\n  double d;\n} UNIONT;\n\ntypedef struct MyData\n{\n  int     tag;\n  UNIONT  u;\n} MYDATA;\n\n\nint foo(char ch_param)\n{\n   MYDATA md;\n\n   md.tag = 0;  // say, 0 for int, 1 for char, 2 for double\n   md.u.c = ch_param;\n\n   return md.u.i; // return is undefined\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, union is used",
+		"desc": "Union should not be used",
+		"details": "#### Abstract\nUnion should not be used\n\n#### Explanation\nIf the union member read is wider than the member written then the value is unspecified. Since it is possible to access bytes with unspecified values, unions should not be used."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_21_3",
+		"master_id": "2050",
+		"name": "Memory allocation related functions in stdlib.h shall not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <string.h>\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid func() {\n\n    #define MAX_STR_SZ 10   \n    char str[MAX_STR_SZ];\n    strncpy(str, \"string\", MAX_STR_SZ);\n    \n    strcpy(str, \"string\");\n    printf(\"%s\", str);\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <string.h>\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid func() {\n    char *str;\n\n    str = (char *) malloc(10);\n    strcpy(str, \"string\");\n    printf(\"%s\", str);\n\n    free(str);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, memory allocation related function ${so.func} in stdlib.h is used",
+		"desc": "Memory allocation related functions in stdlib.h shall not be used",
+		"details": "#### Abstract\nMemory allocation related functions in stdlib.h shall not be used\n\n#### Explanation\nThe use of memory allocation related functions in stdlib.h can lead to an undefined behaviour. For example:  memory that was dynamically allocated may not be freed subsequently."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_21_4",
+		"master_id": "2051",
+		"name": "setjmp.h should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <stdlib.h>\n#include <setjmp.h>\n\nvoid func() {\n    int val;\n    jmp_buf env_buffer;\n\n    val = setjmp(env_buffer);\n\n    // Set value to val after lngjmp\n    if (val != 0) {\n        printf(\"Return from longjmp with value = %d\", val);\n        exit(0);\n    }\n\n    // Jump back to top\n    printf(\"Jump to top\");\n    // Using longjmp and setjmp can cause undefined behaviour\n    longjmp(env_buffer, 10);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, setjmp.h is used",
+		"desc": "setjmp.h should not be used",
+		"details": "#### Abstract\nsetjmp.h should not be used\n\n#### Explanation\nSetjmp allows the normal function call/return mechanisms to be bypassed. The use of that can lead to undefined and unspecified behavior."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_21_5",
+		"master_id": "2052",
+		"name": "signal.h should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <signal.h>\n#include <stdbool.h>\n#include <unistd.h>\n\nvoid sig_handler(int signum) {\n    printf(\"\\nInside handler function\\n\");\n}\n\nvoid func() { \n    // Register signal handler\n    // Using functions from signal.h can lead to undefined behaviour\n    signal(SIGINT,sig_handler); \n  \n    while(true) {    \n        printf(\"Inside func()\");    \n        sleep(1);  \n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, signal.h is used",
+		"desc": "signal.h should not be used",
+		"details": "#### Abstract\nsignal.h should not be used\n\n#### Explanation\nSince signal handling contains an implementation-defined and undefined behaviour, signal.h should not be used for C90 and C99 modes."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_21_6",
+		"master_id": "2053",
+		"name": "I/O functions in stdio.h should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid bar_c(void* ptr)\n{\n    int* dest = (int*)ptr;\n    int data = (*dest);\n    int i;\n    int Buffer[10] = { 0 };\n    if(data >= 0)\n      {\n         Buffer[data] = 1;\n         for(i=0; i<10; i++)\n         {\n             printf(\"%d\", Buffer[i]);\n         }\n     }\n }\n\n void foo_v()\n {\n     int data;\n     data = -1;\n     fscanf(stdin, \"%d\", &data); // this can easily cause array out of bound\n     bar_c(&data);\n } "
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, I/O functions in stdio.h is used",
+		"desc": "I/O functions in stdio.h should not be used",
+		"details": "#### Abstract\nI/O functions in stdio.h should not be used\n\n#### Explanation\nSince I/O have unspecified, undefined and implementation-defined behaviours，I/O functions and their wide char equivalents in stdio.h should not be used for C90 and C99 modes."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_21_7",
+		"master_id": "2054",
+		"name": "ascii conversion functions in stdlib.h should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <iostream>\n#include <cstdlib>\n\nint foo()\n{\n  char s[] = \"98\";\n  long num;\n\n  num = atol(s);\n\n  std::cout << \"number in long = \" << num << std::endl;\n    \n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, ascii conversion functions in stdlib.h is used",
+		"desc": "ascii conversion functions in stdlib.h should not be used",
+		"details": "#### Abstract\nascii conversion functions in stdlib.h should not be used\n\n#### Explanation\nSince atof, atol and atoll functions have undefined behaviors associated with them when the string cannot be converted, they should not be used for C90 and C99 modes."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_21_8",
+		"master_id": "2055",
+		"name": "getenv, getenv and exit functions should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid func () {\n   printf(\"Start of program\\n\");\n   \n   // Do not use abort, exit, getenv or system\n\n   printf(\"End of program\\n\");\n\n   return(0);\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <stdlib.h>\n\nint main(void)\n{\n  char* ptr_h;\n  char h[64];\n\n  ptr_h = getenv(\"HOME\");  // value of HOME could be > 64, need size guard\n  if (ptr_h != NULL) {\n    // ...\n  }\n  return 0;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, getenv, getenv and exit functions are used",
+		"desc": "getenv, getenv and exit functions should not be used",
+		"details": "#### Abstract\ngetenv, getenv and exit functions should not be used\n\n#### Explanation\nSince getenv, getenv and exit functions have undefined and implementation-defined behaviors, they should not be used for C90 and C99 modes."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "",
+		"code": "MSR_21_9",
+		"master_id": "2056",
+		"name": "bsearch and qsort should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <stdlib.h>\n\n\nint cmpfunc(const void * a, const void * b) {\n   return ( *(int*)a - *(int*)b );\n}\n\nint arr[] = { 1, 2, 3, 4, 5 };\n\nvoid func () {\n   int *item;\n   int key = 3;\n\n   // use bsearch to compare and find values of 3 in the array arr\n   item = (int*) bsearch (&key, arr, 5, sizeof (int), cmpfunc);\n   if( item != NULL ) {\n      printf(\"Found item\");\n   } else {\n      printf(\"Item is not in the array\");\n   }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, bsearch and qsort is used",
+		"desc": "bsearch and qsort should not be used",
+		"details": "#### Abstract\nbsearch and qsort should not be used\n\n#### Explanation\nIf bsearch and qsort function do not behave consistently when comparing elements, or they modify any of the elements, the behavior is undefined. So they should not be used for C90 and C99 modes."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "",
+		"code": "MSR_21_10",
+		"master_id": "2057",
+		"name": "Time and date functions in stdlib.h should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n#include <time.h>\n \nvoid func (){\n   // Using time and date function can lead to undefined behaviour\n   printf(\"%ld\", time(NULL));\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, time and date functions in stdlib.h are used",
+		"desc": "Time and date functions in stdlib.h should not be used",
+		"details": "#### Abstract\nTime and date functions in stdlib.h should not be used\n\n#### Explanation\nSince the time and date functions have unspecified, undefined and implementation-defined behaviors, they should not be used for C90 and C99 modes."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_0_1",
+		"master_id": "3001",
+		"name": "MSR_5_0_1",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\n#define LEN 1024\n\nint array_int[LEN];\n\nint foo(int i, int j)\n{\n  if (j > 0) {\n    return i+1;\n  }\n  else\n    return i;\n}\n\nint bar(unsigned int parm_b)\n{\n  if (parm_b < LEN) {\n    unsigned int temp = parm_b++;\n    array_int[temp] = parm_b ;  // behavior is deterministic\n  \n  return parm_b;\n}\n\nint call_foo(int i)\n{\n  int j = i++;\n  return foo(j, i);  // return value non-ambiguous\n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\n#define LEN 1024\n\nint array_int[LEN];\n\nint foo(int i, int j)\n{\n  if (j > 0) {\n    return i+1;\n  }\n  else\n    return i;\n}\n\n\nint bar(unsigned int parm_b)\n{\n  if (parm_b < LEN)\n    array_int[parm_b++] = parm_b ;  // behavior is undefined\n  \n  return parm_b;\n}\n\n\nint call_foo(int i)\n{\n  return foo(i++, i);  // return value is implementation defined\n}\n"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, the value of ${so.func} is not the same under any evaluation order permitted by the language standard",
+		"desc": "For an evaluation of any expression and its side effects, the value must be the same under any evaluation order permitted by the language standard",
+		"details": "#### Abstract\nFor an evaluation of any expression and its side effects, the value must be the same under any evaluation order permitted by the language standard\n\n#### Explanation\nSince the expression may have multiple execution orders, the design for any expression, should ensure that the value of the expression and its side effects are the same in all possible execution orders as prescribed by the lexical rule for the expression."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_0_8",
+		"master_id": "3002",
+		"name": "MSR_5_0_8",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\nvoid func_5_0_8(int si, short sh_j, float flt_k)\n{\n  short  local_sh = 0x1234;\n  int    local_int1, local_int2;\n  float  local_flt = 1.0;\n  double local_dbl, local_dbl2;\n\n  local_int1 = static_cast< int > (int)local_sh + sh_j;  // compliant\n  local_int2 = static_cast< int > (local_sh) + sh_j;     // compliant\n\n  local_dbl2 = static_cast<double> ((double)flt_k) + local_flt;  // compliant\n  \n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\nvoid func_5_0_8(int si, short sh_j, float flt_k)\n{\n  short  local_sh = 0x1234;\n  int    local_int1, local_int2;\n  float  local_flt = 1.0;\n  double local_dbl, local_dbl2;\n\n  local_int1 = static_cast< int > (local_sh + sh_j);  // non-compliant\n\n  local_dbl2 = static_cast<double> (flt_k + local_flt);  // non-compliant\n  \n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, the value of ${so.func} is cast to sizes larger than the underlying type of the expression",
+		"desc": "The value of an expression cannot be cast to sizes larger than the underlying type of the expression",
+		"details": "#### Abstract\nThe value of an expression cannot be cast to sizes larger than the underlying type of the expression\n\n#### Explanation\nWhen the value of an expression is cast to a size larger than its underlying type, there may be information loss such as signedness of the value."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_5_0_19",
+		"master_id": "3003",
+		"name": "More than 2 indirections",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\nint array[10][20];\n\n// this example is equivalent to the \"avoid\" example\n// \nint mlk_three_indirect(int val)\n{\n  int j = val;\n  int *p = &j;\n  int **p_2, **r_2;\n  int *p_2_array = &array[*p][0];\n  int p3;\n  \n  array[val][0] = val;\n  p3 = array[val][0];\n  return p3;\n\n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\nint array[10][20];\n\nint mlk_three_indirect(int val)\n{\n  int j = val;\n  int *p = &j;\n  int **p_2, **r_2;\n  int *p_2_array = &array[*p][0];\n  int ***p3;\n\n  // ... \n  p_2 = &p;\n  \n  // ...\n  array[val][0] = **p_2;\n  \n  //...\n  r_2 = &p_2_array;\n  \n  // ...\n  p3 = &r_2;\n  \n  // ... \n  return ***p3;\n\n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, declaration of objects contains more than two levels of pointer indirection",
+		"desc": "Declaration of objects cannot contain more than two levels of pointer indirection",
+		"details": "#### Abstract\nDeclaration of objects cannot contain more than two levels of pointer indirection\n\n#### Explanation\nHaving more than two levels of indirection, which gives, at least three levels of dereferencing an object, means it can be very hard to understand the intended behavior of the program."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_8_5_3",
+		"master_id": "3004",
+		"name": "Bad enum initialization",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\ntypedef enum color { red=3 } GoodEnum;   // compliant\n\n// compliant (but assignment not in sequence )\ntypedef enum bad_enum_color { white=0,\n         blue=1,         // 2 is not used \n         yellow=3 } BadEnum;  \n\ntypedef enum no_assign { NO_ONE, NO_TWO, NO_THREE } GoodEnum_NoAssign;\n\nextern void bar( color c, bad_enum_color b, no_assign n);\n\nvoid func_use(void)\n{\n  color var_color = red;\n  bad_enum_color var_bad_color = blue;\n  no_assign var_no_assign = NO_TWO;\n\n  bar(var_color, var_bad_color, var_no_assign);\n  return;\n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\ntypedef enum color { red=3 } GoodEnum;   // compliant\n\ntypedef enum bad_enum_color { white=0,\n\t\t\t      blue=1,\n\t\t\t      yellow } BadEnum;  // non-compliant\n\ntypedef enum no_assign { NO_ONE, NO_TWO, NO_THREE } GoodEnum_NoAssign;\n\nextern void bar( color c, bad_enum_color b, no_assign n);\n\nvoid func_use(void)\n{\n  color var_color = red;\n  bad_enum_color var_bad_color = blue;\n  no_assign var_no_assign = NO_TWO;\n\n  bar(var_color, var_bad_color, var_no_assign);\n  return;\n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the enum initialization is incorrect",
+		"desc": "The only explicit initialization of an enum with the “=” construct is such that all, none or the first one, are initialized",
+		"details": "#### Abstract\nThe only explicit initialization of an enum with the “=” construct is such that all, none or the first one, are initialized\n\n#### Explanation\nExplicit and uniform initialization of an enum list prevents mixing of automatic and manual assignment, which is error-prone. The compiler can also detect possible out of range errors for the enum."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_1_3",
+		"master_id": "3005",
+		"name": "Base class has virtual and non-virtual",
+		"severity": "H",
+		"compliance": "R",
+		"likelihood": "L",
+		"cost": "H",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\nclass Expr {\n  int i;\npublic:\n  Expr(); // def constructor\n  Expr(const Expr&); // copy constructor\n\n  virtual Expr* newExpr() { i+=2; return new Expr(); }\n  virtual Expr* clone()   { i++; return new Expr(*this); }\n};\n\n\nclass B1 : public virtual Expr {};\nclass B2 : public virtual Expr {};\nclass B3 : public         Expr {};\n\nclass C  : public B1, B2 {};  // both B1 and B2 are virtual\n\nclass D  : public B3, B1 {};  // B3 and B1 are different base classes"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\nclass Expr {\n  int i;\npublic:\n  Expr(); // def constructor\n  Expr(const Expr&); // copy constructor\n\n  virtual Expr* newExpr() { i+=2; return new Expr(); }\n  virtual Expr* clone()   { i++; return new Expr(*this); }\n};\n\n\nclass B1 : public virtual Expr {};\nclass B2 : public virtual Expr {};\nclass B3 : public         Expr {};\n\n// B2 and B3 are virtual and non-virtual in a multiple inheritance hierarchy\nclass C  : public B1, B2, B3 {}; "
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, a base class is virtual and non-virtual in a multiple inheritance hierarchy",
+		"desc": "A base class should not be both, virtual and non-virtual in a multiple inheritance hierarchy",
+		"details": "#### Abstract\nA base class should not be both, virtual and non-virtual in a multiple inheritance hierarchy\n\n#### Explanation\nIf the base class is both virtual and non-virtual in a multiple inheritance hierarchy, then there will be multiple copies of the base class sub-object in the derived object. This is likely a declaration error."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_12_1_1",
+		"master_id": "3006",
+		"name": "Dynamic type in ctor or dtor",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\nclass Expr {\n  int i;\n  \npublic:\n  Expr(const Expr&); // copy constructor\n  virtual ~Expr ();\n\n  virtual Expr* newExpr() { i+=2; return new Expr(); }\n  virtual Expr* clone()   { i++; return new Expr(*this); }\n  Expr() {\n    Expr::clone();                // not a virtual call, hence compliant\n    clone();                      // a virtual call\n    // the following line must be removed from this constructor declaration\n    // commented out in the example to be clear\n    // dynamic_cast<Expr*> (this);  \n  }\n};\n"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\nclass Expr {\n  int i;\n  \npublic:\n  Expr(const Expr&); // copy constructor\n  virtual ~Expr ();\n\n  virtual Expr* newExpr() { i+=2; return new Expr(); }\n  virtual Expr* clone()   { i++; return new Expr(*this); }\n  Expr() {\n    Expr::clone();                // not a virtual call, hence compliant\n    clone();                      // a virtual call\n    dynamic_cast<Expr*> (this);   // non-compliant\n  }\n};\n"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, an object’s dynamic type is used from the body of its constructor or destructor",
+		"desc": "An object’s dynamic type cannot be used from the body of its constructor or destructor",
+		"details": "#### Abstract\nAn object’s dynamic type cannot be used from the body of its constructor or destructor\n\n#### Explanation\nA non-static member of an object can have an initialization with the declaration of the member in its body (NSDMI). To avoid confusion, any member initialized this way (NSDMI) or with a constructor should be the same."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_12_1_2",
+		"master_id": "3007",
+		"name": "ctor must explicitly call ctor for all its immediate base classes",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\nclass Base {\npublic:\n  Base() {}\n  Base(int i);\n};\n\n\nclass Derived1 : public virtual Base {\npublic:\n  Derived1() {}\n  Derived1(int) : Base(0) {}\n}; \n\nclass Derived2 : public virtual Base {\npublic:\n  Derived2() {}\n  Derived2(int) : Base(1) {}\n}; \n\n\nclass Hier : public Derived1, public Derived2 {\n  //  Hier()    {}\n  Hier(int) {} // constructor used is ambiguous w.r.t. Derived1 or Derived2\n\n};"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\nclass Base {\npublic:\n  Base() {}\n  Base(int i);\n};\n\n\nclass Derived1 : public virtual Base {\npublic:\n  Derived1() {}\n  Derived1(int) : Base(0) {}\n}; \n\nclass Derived2 : public virtual Base {\npublic:\n  Derived2() {}\n  Derived2(int) : Base(1) {}\n}; \n\n\nclass Hier : public Derived1, public Derived2 {\n  //  Hier()    {}\n  Hier(int) {} // constructor used is ambiguous w.r.t. Derived1 or Derived2\n\n};"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, ctor does not explicitly call ctor for all its immediate base classes",
+		"desc": "ctor must explicitly call ctor for all its immediate base classes",
+		"details": "#### Abstract\nctor must explicitly call ctor for all its immediate base classes\n\n#### Explanation\n"
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_12_1_3",
+		"master_id": "3008",
+		"name": "ctor with single parameter of basic type should be explicit",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\nclass Base {\npublic:\n  Base() {}\n  explicit Base(int i);\n};\n\n\nclass Derived1 : public virtual Base {\npublic:\n  Derived1() {} \n  explicit Derived1(int) : Base(0) {}    // make explicit\n}; \n\nclass Derived2 : public virtual Base {\npublic:\n  Derived2() {}\n  explicit Derived2(int) : Base(1) {}    // make explicit\n}; \n\n\nclass Hier : public Derived1, public Derived2 {\n  explicit Hier(int) : Derived1(2), Derived2(), Base() {}  // make explicit\n\n};"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\n\nclass Base {\npublic:\n  Base(void) {}\n  Base(int i);\n};\n\n\nclass Derived1 : public virtual Base {\npublic:\n  Derived1() {}\n  Derived1(int) : Base(0) {}\n}; \n\nclass Derived2 : public virtual Base {\npublic:\n  Derived2() {}\n  Derived2(int) : Base(1) {}\n}; \n\nclass Hier : public Derived1, public Derived2 {\n  Hier(int)    {}\n};"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, ctor with single parameter of basic type is not explicit",
+		"desc": "ctor with single parameter of basic type should be explicit",
+		"details": "#### Abstract\nctor with single parameter of basic type should be explicit\n\n#### Explanation\n"
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_11_0_1",
+		"master_id": "3009",
+		"name": "Non-POD member in a class must be private",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\ntypedef char    Letter;  \ntypedef Letter* pLetter;\n  \nclass Class_Without_POD    \n{\npublic:\n  Letter  c;  \n  pLetter p;\n};\n\nclass Class_with_POD\n{\nprivate:\n  char    c;         // will need interfaces to access and modify\n  char*   pc;  \n};"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\n#include <stdint.h>\n\ntypedef char    Letter;  \ntypedef Letter* pLetter;\n  \nclass Class_Without_POD    \n{\npublic:\n  Letter  c;  \n  pLetter p;\n};\n\nclass Class_with_POD\n{\npublic:\n  int8_t   c;         // POD has no default constructor\n  char*   pc;  \n};"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, non-POD member in a class is not private",
+		"desc": "Non-POD member in a class must be private",
+		"details": "#### Abstract\nNon-POD member in a class must be private\n\n#### Explanation\n"
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_10_2_1",
+		"master_id": "3010",
+		"name": "All visible names within an inheritance hierarchy must be unique",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					"\n\nclass Base {\npublic:\n  void func_char(char) {};\n};\n\nclass Derived : public Base {\npublic:\n  void func_int(int) {};\n};\n\n\nint foo(void)\n{\n  int   i;\n  char ch;\n  Derived example;\n\n  example.func_int(i);\n\n  example.func_char(ch);  // func(char) in Base is not visible \n  \n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					"\n\nclass Base {\npublic:\n  void func(char) {};\n};\n\nclass Derived : public Base {\npublic:\n  void func(int) {};\n};\n\n\nint foo(void)\n{\n  int   i;\n  char ch;\n  Derived example;\n\n  example.func(i);\n  example.func(ch);  // func(char) in Base is not visible \n  \n}"
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the visiable names within a inheritance hierarchy are not unique",
+		"desc": "All visible names within an inheritance hierarchy must be unique",
+		"details": "#### Abstract\nAll visible names within an inheritance hierarchy must be unique\n\n#### Explanation\n"
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_17_7",
+		"master_id": "2058",
+		"name": "Value returned by a function should be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nextern int func_ret_int(int, int);\n\n\nvoid bar(int n, int m)\n{\n  if (n > 0) {\n    n += func_ret_int(n, m);\n  }\n  else {\n    (void)func_ret_int(m, m); // func return value ignored\n  }\n}\n"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nextern int func_ret_int(int, int);\n\n\nvoid bar(int n, int m)\n{\n  if (n > 0) {\n    n += func_ret_int(n);\n  }\n  else {\n    func_ret_int(m); // func return value ignored\n  }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, value returned by ${so.func} is not used",
+		"desc": "The value returned by a function which has non-void return type should be used",
+		"details": "#### Abstract\nThe value returned by a function which has non-void return type should be used\n\n#### Explanation\nCalling a function without using the return value may be an error for a C90 and a C99 mode. Return value of a function should be cast to the void type if it is intended not to be used explicitly."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_17_8",
+		"master_id": "2059",
+		"name": "A function parameter should not be modified",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}\n\n"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nextern int func_ret_int(int, int);\n\nint global_int;\n\nvoid bar(int n, int m)\n{\n  if (n > 0) {\n    n += func_ret_int(n, m);  // parameter n modified\n  }\n  else {\n    n = global_int;  // value of n modified by global\n  }\n  \n  // ...\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, a function parameter is modified",
+		"desc": "The parameter of a function should not be modified",
+		"details": "#### Abstract\nThe parameter of a function should not be modified\n\n#### Explanation\nModifying the parameter of a function can be confusing and in conflict with programmer expectations for C90 and C99 modes. So the The parameter of a function should not be modified."
+	},
+	{
+		"category": "",
+		"language": "c",
+		"code": "MSR_10_2",
+		"master_id": "2046",
+		"name": "char not allowed in arithmatic expression",
+		"examples": {
+			"good": {
+				"cpp": "",
+				"java": "",
+				"c": "\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    // essentially character type declared\n  char char_var;   \n  char numb;\n  char_var = '9';\n  // convert numa to digit value 9\n  numb = char_var - '0';\n  return numb\n\n}\n",
+				"general": ""
+			},
+			"bad": {
+				"cpp": "",
+				"java": "",
+				"c": "\n#include <stdio.h>\n\nint func( void );\n\nint func( void )\n{\n    // essentially character type declared\n    char char_var;\n    int numb;\n    char_var = '9';\n    // the result of char_var + '>' do not make sense\n    numb = char_var + '>';\n    return numb;\n\n}",
+				"general": ""
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, char is used in arithmatic expression ${so.func}",
+		"desc": "Use basic character variables appropriately for addition and subtraction",
+		"details": "#### Abstract\nUse basic character variables appropriately for addition and subtraction\n\n#### Explanation\nSince the data in the basic character variable does not represent a numeric value, the basic character variable should be used appropriately in the addition and subtraction expressions."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "",
+		"code": "MSR_14_2",
+		"master_id": "2060",
+		"name": "A for loop should be well-formed",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    for (int i = 0; i < 5; i++) {\n        // Do something \n    }\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    for (int i = 0; i < 5; i++) {\n        // modifying the induction variable i. Error prone and hard to review\n        i = i + 4;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the for loop is not well-formed",
+		"desc": "A loop consists of three clauses. Firstly, a loop counter properly assigned and defined (empty is permissible). Secondly, a loop terminating expression that uses the loop counter, with no persistent side effects. And that expression does not contain objects modified in the loop body. Thirdly, an expression with the loop counter being modified and no other objects used that are modified in the loop body.",
+		"details": "#### Abstract\nA for loop should be well-formed\n\n#### Explanation\nThe second and third clause of the for loop statement should not use any object that is modified in the for loop body. Using a restricted form of for loop will make code easier to check and review."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_14_3",
+		"master_id": "2061",
+		"name": "Controlling expressions should not be invariant",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdbool.h>\n\nvoid func() {\n    // Compliant by exception 1\n    while (true) {\n        // Do something\n    } \n\n    // Compliant by exception 2\n    do {\n        // Do something\n    } while (0 == 1);\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    // The if statement always evaluates to false, dead code\n    if (10 > 11) {\n        // Do something\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} is using an invariant value for controlling expressions",
+		"desc": "Controlling expression of a statement should not be invariant",
+		"details": "#### Abstract\nControlling expression of a statement should not be invariant\n\n#### Explanation\nUsing invariant values as controlling expresson can cause programming error. The compiler might even remove the code as it may not be able to be reached due to invariant expression. This might result in unwanted removal of defensive code."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_15_1",
+		"master_id": "2062",
+		"name": "The goto statement should not be used",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    int num = 0;\n\n    num += 1;\n    // Do not use the goto statement\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    int num = 0;\n\n    P1:\n    num += 1;\n\n    // Using the goto statement can cause confusion\n    goto P1;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} uses the goto statement",
+		"desc": "The goto statement should not be used",
+		"details": "#### Abstract\nThe goto statement should not be used\n\n#### Explanation\nUsing the goto statement without constraints can lead to unstructured and extremely difficult to understand programs."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_15_2",
+		"master_id": "2063",
+		"name": "The goto statement should jump to a label declared later in the same function",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    int num = 0;\n\n    // No back jump in the code\n    goto P1;\n\n    P1:\n    num += 1;\n}\n"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    int num = 0;\n\n    P1:\n    num += 1;\n\n    // Non-compliant as back jump is allowed\n    goto P1;\n}\n"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the goto statement does not jump to a label declared later in the same function",
+		"desc": "If a goto statement is really needed, it shall be a forward goto.",
+		"details": "#### Abstract\nIf a goto statement is really needed, it shall be a forward goto.\n\n#### Explanation\nSince using the goto statement without constraints can lead to unstructured and extremely difficult to understand programs, the use of goto statement should be restricted. Using language provided iteration statement results in much more readable code."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_15_3",
+		"master_id": "2064",
+		"name": "A goto statement and its label must be in the same scope",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    int num = 0;\n\n    P1:\n        if (num == 5) {\n        P2:\n            num += 1;\n        }\n\n    // Jumping into the reference label outside of the nested block\n    goto P1;\n}\n"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    int num = 0;\n\n    P1:\n        if (num == 5) {\n        P2:\n            num += 1;\n        }\n\n    // Jumping into nested label is non-compliant\n    goto P2;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, a goto statement and its label are not in the same scope",
+		"desc": "Label should be declared in the same scope as its goto statement.",
+		"details": "#### Abstract\nLabel should be declared in the same scope as its goto statement.\n\n#### Explanation\nUsing the goto statement without constraints can lead to unstructured and extremely difficult to understand programs. Allowing goto statement to jump between blocks or into nested blocks to a reference label make the code visually complex."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"language": "",
+		"code": "MSR_15_4",
+		"master_id": "2065",
+		"name": "Loop early exits should not use both break and goto in the same loop",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    for (int i = 0; i < 5; i++) {\n        // Only use either break or goto, don"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    for (int i = 0; i < 5; i++) {\n        // Multiple early termination\n        if (i == 2) {\n            break;\n        }\n        // Multiple early termination\n        else if (i == 2) {\n            goto EXIT;\n        }\n        else {\n            // Continue\n        }\n    }\n\n    EXIT:\n        ;\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, loop early exits use both break and goto in the same loop",
+		"desc": "Should not use both goto and break in a loop for early exit",
+		"details": "#### Abstract\n不应在循环中同时使用 goto 和 break 来提前退出\n\n#### Explanation\nUsing the goto statement without constraints can lead to unstructured and extremely difficult to understand programs. Restricting the number of exits in a loop helps simplify the source code."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_15_7",
+		"master_id": "2066",
+		"name": "Each if statement in if-else should have an else statement",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdbool.h>\n\nvoid func() {\n    bool flag;\n\n    if (flag == true) {\n        // Do something\n    }\n    else if (flag == false) {\n        // Do something\n    }\n    else {\n        // Add else statement as defensive programming\n        // Do something\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdbool.h>\n\nvoid func() {\n    bool flag;\n\n    if (flag == true) {\n        // Do something\n    }\n    else if (flag == false) {\n        // Do something\n    }\n    // Non-compliant as there is no else statement\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} did not end with an else statement.",
+		"desc": "Each if-else should have an if statement and end with an else statement.",
+		"details": "#### Abstract\nEach if-else should have an if statement and end with an else statement.\n\n#### Explanation\nUsing the else statement to terminate the if ... else if constructs complements the requirement for a default clause in a switch statement ad is a kind of defensive programming."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_16_5",
+		"master_id": "2067",
+		"name": "A default label should appear as either the first or the last switch label of a switch statement",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func() {\n    int num = 2;\n\n    switch(num + 2) {\n        case 1:\n            printf(\"case 1\");\n            break;\n        case 2:\n            printf(\"case 2\");\n            break;\n        default:\n            // Default case is placed at last\n            printf(\"default case\");\n            break;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func() {\n    int num = 2;\n    switch(num + 2) {\n        case 1:\n            printf(\"case 1\");\n            break;\n        default:\n            // Default case is not at first or last\n            printf(\"default case\");\n            break;\n        case 2:\n            printf(\"case 2\");\n            break;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the default label for the switch statement was not placed in first or last.",
+		"desc": "The default label for the switch statement should be placed in first or last.",
+		"details": "#### Abstract\nThe default label for the switch statement is not placed in first or last.\n\n#### Explanation\nPutting the default label anywhere else other than the first or last in a switch statement makes it difficult to locate."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_16_7",
+		"master_id": "2068",
+		"name": "A switch-expression should not have essentially Boolean type",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdbool.h>\n#include <stdio.h>\n\nvoid func() {\n    int num = 0;\n    // If else is more appropriate than switch for controlling expression with boolean\n    if (num == 0) {\n        printf(\"True\");\n    }\n    else {\n        printf(\"default\");\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdbool.h>\n#include <stdio.h>\n\nvoid func() {\n    int num = 0;\n    // Switch with boolean caluse as the controlling expression is redundant\n    switch(num == 0) {\n        case true:\n            printf(\"True case\");\n            break;\n        default:\n            printf(\"default case\");\n            break;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, a switch expression was of boolean type.",
+		"desc": "A switch expression should not be of boolean type.",
+		"details": "#### Abstract\nA switch expression should not be of boolean type.\n\n#### Explanation\nAlthough it is possible to implement a switch statement controlling expression with a Boolean, it would be more appropriate to implement the logic with an if-else construct as defined by the standard."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_17_1",
+		"master_id": "2069",
+		"name": "The features of <stdarg.h> should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdarg.h>\n\nvoid func(double arg) {\n    double var;\n    \n    // Should not use <stdarg.h> for variable argument processing\n    var = arg;\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdarg.h>\n\nvoid func(va_list var_arg) {\n    double var;\n    \n    // Using va_list and va_arg can cause undefined behaviour\n    var = va_arg(var_arg, double);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func},  features of <stdarg.h> were used.",
+		"desc": "The features of <stdarg.h> should not be used.",
+		"details": "#### Abstract\nThe features of <stdarg.h> should not be used.\n\n#### Explanation\nva_list, va_arg, va_start, va_end, and va_copy should never be used. There are many instances of undefined behaviour when the source code are not organized properly causing inconsistency in type or usages."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_17_2",
+		"master_id": "2070",
+		"name": "Functions should not call themselves, either directly or indirectly",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func(int num){\n    // Implement recursion using for loop instead\n    for (int i = num; i == 0; i--){\n        printf(\"%d\\n\", i);\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func(int num){\n    if (num == 0) {\n        return;\n    }\n\n    printf(\"%d\\n\", num);\n\n    func(num - 1); // Using recursion unless tightly controlled can exceed available stack\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} called itself.",
+		"desc": "Functions should not call themselves, either directly or indirectly - recursive function (direct or indirect) should not be reused.",
+		"details": "#### Abstract\nFunctions should not call themselves, either directly or indirectly - recursive function (direct or indirect) should not be reused.\n\n#### Explanation\nWhen a function is calling itself, i.e. recursion, it can lead to stack space exhaustion. It is not possible to determine what the worst-case stack usage is before execution."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_17_5",
+		"master_id": "2071",
+		"name": "Parameters of array type should have specified sizes",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid arr1 (int array[4]) {\n    // Do something\n}\n\nvoid func(int num){\n    int arr[4] = {1, 2, 3, 4};\n\n    // Array size match prototype\n    arr1(arr);\n}\n"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid arr1 (int array[4]) {\n    // Do something\n}\n\nvoid func(int num){\n    int arr[3] = {1, 2, 3};\n\n    // Array size does not match prototype\n    arr1(arr);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, parameters of array type did not have specific sizes.",
+		"desc": "Parameters of array type should have specified sizes.",
+		"details": "#### Abstract\nParameters of array type should have specified sizes.\n\n#### Explanation\nAlthough it is legal in C to pass an array of the unspecified size to a parameter with a specified size, doing so can lead to unexpected behaviour such as array out of bound."
+	},
+	{
+		"category": "",
+		"mapping": "undefined",
+		"language": "c",
+		"code": "MSR_18_1",
+		"master_id": "2072",
+		"name": "A pointer resulting from arithmetic on a pointer operand shall address an element of the same array as that pointer operand",
+		"severity": "H",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}"
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to two beyond, undefined\n    int *p = &arr[4];\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} assessed an undefined location with a pointer that went out of bound.",
+		"desc": "The program assesses an undefined location with a pointer that is out of bound.",
+		"details": "#### Abstract\nThe program assessed an undefined location with a pointer that is out of bound.\n\n#### Explanation\nCompilers can only determine at compile time whether an array boundary has been exceeded. No checks are done at run-time for invalid array indexing. Using invalid indexing can cause program to have erroneous behaviour."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"language": "c",
+		"code": "MSR_21_11",
+		"master_id": "2073",
+		"name": "The standard header file <tgmath.h> should not be used",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <tgmath.h>\n\nvoid func() {\n   float f1;\n   // Generic square root is used, can cause undefined behaviour\n   f1 = sqrt(49);\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} use the standard header file <tgmath.h>",
+		"desc": "The standard header file <tgmath.h> should not be used",
+		"details": "#### Abstract\nThe standard header file <tgmath.h> should not be used\n\n#### Explanation\nSince using functions declared in tgmath.h can result in undefined behaviour, <tgmath.h> shall not be used"
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"language": "c",
+		"code": "MSR_21_12",
+		"master_id": "2074",
+		"name": "The exception handling features of <fenv.h> should not be used",
+		"compliance": "A",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <fenv.h>\n#include <stdio.h>\n#include <math.h>\n\nvoid func() {\n   // Using exception handlinf features can cause undefined behaviour\n   feclearexcept(FE_ALL_EXCEPT);\n   \n   sqrt(-1);\n\n   if (fetestexcept(FE_INVALID)) {\n      printf(\"FE_INVALID casued by sqrt(-1\");\n   }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} use exception handling features declared in <fenv.h>",
+		"desc": "The program used exception handling features declared in <fenv.h>",
+		"details": "#### Abstract\nThe program used exception handling features declared in <fenv.h>\n\n#### Explanation\nThe floatin-point status flags may become unspecified in some circumstances. Attempting to access them may cause undefined behaviour. "
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"language": "c",
+		"code": "MSR_14_1",
+		"master_id": "2075",
+		"name": "A loop counter should not have essentially floating type",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func() {\n    // Using float as a loop counter can lead to unexpected result\n    for (float f = 0.0f; f < 10.0f; f += 0.1f) {\n        // Do something\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} use floating point as a loop counter",
+		"desc": "The program uses floating point as a loop counter which can cause mismatch betweeen expected and actual result.",
+		"details": "#### Abstract\nThe program uses floating point as a loop counter which can cause mismatch betweeen expected and actual result.\n\n#### Explanation\nUsing a floating point as a loop counter can cause accumulation of rounding errors. This might cause mismatch between the expected number of iterations and the actual number of iterations when the program runs depending on the implementation."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"language": "c",
+		"code": "MSR_16_6",
+		"master_id": "2076",
+		"name": "Every switch statement should have at least two switch-clauses",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\n#include <stdio.h>\n\nvoid func() {\n    int num = 2;\n    switch(num + 2) {\n        default:\n            // Only one switch-clause\n            printf(\"default case\");\n            break;\n    }\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} have less than two switch-clause",
+		"desc": "Every switch statement should have more than one switch-clause",
+		"details": "#### Abstract\nEvery switch statement should have more than one switch-clause\n\n#### Explanation\nHaving a single path for a switch statement is not only redundant but also an indicative of programming error."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"language": "",
+		"code": "MSR_9_1",
+		"master_id": "2077",
+		"name": "Local variables should be initialized before being read",
+		"compliance": "M",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "",
+		"desc": "Local variables should be initialized before being read",
+		"details": "#### Abstract\nLocal variables should be initialized before being read\n\n#### Explanation\nObjects with static storage duration are automatically initialized to zero unless initialized explicitly. Objects with atutomatic storage duration are not automatically initialized so that they can have indeterminate values."
+	}
+]
