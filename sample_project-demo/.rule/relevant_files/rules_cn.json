@@ -1,7 +1,7 @@
 [
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "",
 		"code": "MSR_2_3",
 		"master_id": "2001",
@@ -46,8 +46,8 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"language": "",
 		"code": "MSR_2_6",
 		"master_id": "2002",
 		"severity": "H",
@@ -2451,7 +2451,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
 		"code": "MSR_21_10",
 		"master_id": "2057",
 		"compliance": "R",
@@ -2492,8 +2494,10 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_5_0_1",
 		"master_id": "3001",
 		"severity": "H",
@@ -2537,8 +2541,10 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_5_0_8",
 		"master_id": "3002",
 		"severity": "H",
@@ -2583,7 +2589,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_5_0_19",
 		"master_id": "3003",
 		"severity": "H",
@@ -2628,7 +2636,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_8_5_3",
 		"master_id": "3004",
 		"severity": "H",
@@ -2673,7 +2683,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_10_1_3",
 		"master_id": "3005",
 		"severity": "H",
@@ -2718,7 +2730,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_12_1_1",
 		"master_id": "3006",
 		"compliance": "R",
@@ -2760,7 +2774,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_12_1_2",
 		"master_id": "3007",
 		"compliance": "A",
@@ -2886,7 +2902,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_10_2_1",
 		"master_id": "3010",
 		"compliance": "A",
@@ -2970,7 +2988,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
 		"code": "MSR_17_8",
 		"master_id": "2059",
 		"compliance": "A",
@@ -2983,7 +3003,7 @@
 					""
 				],
 				"c": [
-					"\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}\n\n"
+					"\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}"
 				],
 				"general": [
 					""
@@ -2997,7 +3017,7 @@
 					""
 				],
 				"c": [
-					"\nextern int func_ret_int(int, int);\n\nint global_int;\n\nvoid bar(int n, int m)\n{\n  if (n > 0) {\n    n += func_ret_int(n, m);  // parameter n modified\n  }\n  else {\n    n = global_int;  // value of n modified by global\n  }\n  \n  // ...\n}"
+					"\n#include <stdio.h>\n\nvoid func(int param){\n    // Modifying parameter can cause confusion\n    param = 5;\n    printf(\"%d\\n\", param);\n}"
 				],
 				"general": [
 					""
@@ -3288,6 +3308,8 @@
 	{
 		"category": "",
 		"mapping": "undefined",
+		"gjb5369": "",
+		"gjb8114": "",
 		"language": "c",
 		"code": "MSR_15_7",
 		"master_id": "2066",
@@ -3539,8 +3561,10 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
 		"code": "MSR_18_1",
 		"master_id": "2072",
 		"severity": "H",
@@ -3554,7 +3578,7 @@
 					""
 				],
 				"c": [
-					"\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}"
+					"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}"
 				],
 				"general": [
 					""
@@ -3577,8 +3601,8 @@
 		},
 		"msg_templ": "在${so.filename}，第${so.line}行，函数${so.func}使用了越界的指针评估未定义的位置。",
 		"name": "对指针操作数进行算术运算产生的指针应寻址与该指针操作数相同的数组中的元素",
-		"desc": "程序使用越界的指针评估未定义的位置。",
-		"details": "#### 概要\n程序使用越界的指针评估未定义的位置。\n\n#### 解释\n编译器只能在编译时确定是否超出了数组边界。 在运行时不检查无效的数组索引。 使用无效的索引会导致程序出现错误行为。"
+		"desc": "指针运算不应导致数组越界访问",
+		"details": "#### 概要\n指针运算不应导致数组越界访问\n\n#### 解释\n编译器只能在编译时确定是否超出了数组边界。 在运行时不检查无效的数组索引。 使用无效的索引会导致程序出现错误行为。"
 	},
 	{
 		"category": "",
@@ -3625,6 +3649,8 @@
 	{
 		"category": "",
 		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
 		"language": "c",
 		"code": "MSR_21_12",
 		"master_id": "2074",
@@ -3709,7 +3735,9 @@
 	{
 		"category": "",
 		"mapping": "",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
 		"code": "MSR_16_6",
 		"master_id": "2076",
 		"compliance": "R",
@@ -3751,6 +3779,8 @@
 	{
 		"category": "",
 		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
 		"language": "",
 		"code": "MSR_9_1",
 		"master_id": "2077",
@@ -3789,5 +3819,225 @@
 		"name": "局部变量在被读取之前应该被初始化",
 		"desc": "局部变量在被读取之前应该被初始化",
 		"details": "#### 概要\n局部变量在被读取之前应该被初始化\n\n#### 解释\n具有静态存储持续时间的对象会自动初始化为零\n除非显式初始化。 具有自动存储持续时间的对象不会自动初始化，因此它们可能具有不确定的值。"
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_18_2",
+		"master_id": "2078",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to two beyond\n    int *p1 = &arr[0];\n    int *p2 = &arr[2];\n\n    ptrdiff_t diff;\n    diff = p1 - p2 // undefined\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "在${so.filename}，第${so.line}行，函数${so.func}，指针减法导致了数组越界访问",
+		"name": "指针之间的减法应仅适用于寻址同一数组元素的指针",
+		"desc": "指针减法不应导致访问冲突，例如数组越界。",
+		"details": "#### 概要\n指针减法不应导致访问冲突，例如数组越界。\n\n#### 解释\n如果指针不指向同一数组的元素或超出该数组末尾的元素，则它们之间的减法是未定义的行为。"
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_18_6",
+		"master_id": "2079",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "在${so.filename}，第${so.line}行，函数${so.func}，具有自动存储的对象的地址被复制到第一个对象不存在后仍然存在的另一个对象",
+		"name": "具有自动存储的对象的地址不应复制到第一个对象不存在后仍然存在的另一个对象",
+		"desc": "具有自动存储的对象的地址不应复制到第一个对象不存在后仍然存在的另一个对象",
+		"details": "#### 概要\n具有自动存储的对象的地址不应复制到第一个对象不存在后仍然存在的另一个对象\n\n#### 解释\n当一个对象的生命周期到期时，其地址变得不确定。因此使用该中间终止地址将导致未定义的行为。"
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_22_1",
+		"master_id": "2080",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "在${so.filename}，第${so.line}行，函数${so.func}，通过标准库函数动态获取的资源没有被释放",
+		"name": "所有通过标准库函数动态获取的资源都应该被释放",
+		"desc": "应释放从标准库函数动态获取的资源。",
+		"details": "#### 概要\n应释放从标准库函数动态获取的资源。\n\n#### 解释\n如果没有明确释放这些资源，则可能由于资源耗尽而发生故障。 尽快释放资源可以减少耗尽的可能性。"
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_22_2",
+		"master_id": "2081",
+		"compliance": "M",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "在${so.filename}，第${so.line}行，函数${so.func}，不是由标准库函数分配的内存块被释放",
+		"name": "内存块仅当由标准库函数分配时才可以被释放",
+		"desc": "内存块仅当由标准库函数分配时才可以被释放",
+		"details": "#### 概要\n内存块仅当由标准库函数分配时才可以被释放\n\n#### 解释\n释放未分配的内存或多次释放相同的分配内存是未定义的行为。"
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
+		"code": "MSR_22_4",
+		"master_id": "2082",
+		"compliance": "M",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "在${so.filename}，第${so.line}行，函数${so.func}，以只读方式打开的流被写入。",
+		"name": "不应尝试写入已以只读方式打开的流",
+		"desc": "不应写入以只读方式打开的流。",
+		"details": "#### 概要\n不应写入以只读方式打开的流。\n\n#### 解释\n由于标准没有指定尝试写入只读流时的行为，因此写入只读流是不安全的。"
 	}
 ]

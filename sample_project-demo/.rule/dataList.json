@@ -4,8 +4,12 @@
 		"code": "MSR_2_3",
 		"rules": {
 			"category": "",
-			"mapping": "undefined",
+			"mapping": "",
 			"AutoSAR": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"GJB5369": "",
+			"GJB8114": "",
 			"language": "",
 			"msg_templ_en": "",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}包含未使用的数据类型的定义。",
@@ -66,8 +70,13 @@
 		"code": "MSR_2_6",
 		"rules": {
 			"category": "",
-			"mapping": "undefined",
-			"language": "c",
+			"mapping": "",
+			"AutoSAR": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"GJB5369": "",
+			"GJB8114": "",
+			"language": "",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, unused tags are declared in ${so.func}.",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}使用了未使用的标签。",
 			"code": "MSR_2_6",
@@ -3334,7 +3343,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, time and date functions in stdlib.h are used",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中使用了 stdlib.h 中的时间和日期函数",
 			"code": "MSR_21_10",
@@ -3391,8 +3404,12 @@
 		"code": "MSR_5_0_1",
 		"rules": {
 			"category": "",
-			"mapping": "undefined",
-			"language": "c",
+			"mapping": "",
+			"misra_c": "MSR13.2",
+			"misra_cpp": "5-0-1",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, the value of ${so.func} is not the same under any evaluation order permitted by the language standard",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}的结果值在任何编程语言允许的运行顺序下都不是一样的",
 			"code": "MSR_5_0_1",
@@ -3452,8 +3469,12 @@
 		"code": "MSR_5_0_8",
 		"rules": {
 			"category": "",
-			"mapping": "undefined",
-			"language": "c",
+			"mapping": "",
+			"misra_c": "MSR10.6",
+			"misra_cpp": "5-0-8",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, the value of ${so.func} is cast to sizes larger than the underlying type of the expression",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中，表达式的值转换后大于表达式现有类型的大小",
 			"code": "MSR_5_0_8",
@@ -3514,7 +3535,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "c",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, declaration of objects contains more than two levels of pointer indirection",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}，在声明对象时有多于两层的间接指针",
 			"code": "MSR_5_0_19",
@@ -3575,7 +3600,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "c",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, the enum initialization is incorrect",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中出现错误的枚举初始化",
 			"code": "MSR_8_5_3",
@@ -3636,7 +3665,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "c",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, a base class is virtual and non-virtual in a multiple inheritance hierarchy",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中的基类在多继承体系中既是虚拟的又是非虚拟的",
 			"code": "MSR_10_1_3",
@@ -3697,7 +3730,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "c",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, an object’s dynamic type is used from the body of its constructor or destructor",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中，对象的动态类型在构造函数或者析构函数本体使用",
 			"code": "MSR_12_1_1",
@@ -3755,7 +3792,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "c",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, ctor does not explicitly call ctor for all its immediate base classes",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中ctor没有为其所有直接基类显式调用 ctor",
 			"code": "MSR_12_1_2",
@@ -3929,7 +3970,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "c",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c++",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, the visiable names within a inheritance hierarchy are not unique",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中，继承层次结构中的所有可见名称不是唯一的",
 			"code": "MSR_10_2_1",
@@ -4045,7 +4090,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
-			"language": "c",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, a function parameter is modified",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}中函数的参数被修改",
 			"code": "MSR_17_8",
@@ -4060,8 +4109,8 @@
 			"explanation": "Modifying the parameter of a function can be confusing and in conflict with programmer expectations for C90 and C99 modes. So the The parameter of a function should not be modified.",
 			"abstract_cn": "不得修改函数的参数",
 			"explanation_cn": "对 C90 和 C99 模式而言，修改函数的参数可能会令人困惑并与程序员的期望相冲突。 所以不能修改函数的参数。",
-			"example_good": "///c:\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}\n\n",
-			"example_bad": "///c:\nextern int func_ret_int(int, int);\n\nint global_int;\n\nvoid bar(int n, int m)\n{\n  if (n > 0) {\n    n += func_ret_int(n, m);  // parameter n modified\n  }\n  else {\n    n = global_int;  // value of n modified by global\n  }\n  \n  // ...\n}",
+			"example_good": "///c:\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}",
+			"example_bad": "///c:\n#include <stdio.h>\n\nvoid func(int param){\n    // Modifying parameter can cause confusion\n    param = 5;\n    printf(\"%d\\n\", param);\n}",
 			"details_en": "#### Abstract\nThe parameter of a function should not be modified\n\n#### Explanation\nModifying the parameter of a function can be confusing and in conflict with programmer expectations for C90 and C99 modes. So the The parameter of a function should not be modified.",
 			"details_cn": "#### 概要\n不得修改函数的参数\n\n#### 解释\n对 C90 和 C99 模式而言，修改函数的参数可能会令人困惑并与程序员的期望相冲突。 所以不能修改函数的参数。",
 			"examples": {
@@ -4073,7 +4122,7 @@
 						""
 					],
 					"c": [
-						"\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}\n\n"
+						"\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}"
 					],
 					"general": [
 						""
@@ -4087,7 +4136,7 @@
 						""
 					],
 					"c": [
-						"\nextern int func_ret_int(int, int);\n\nint global_int;\n\nvoid bar(int n, int m)\n{\n  if (n > 0) {\n    n += func_ret_int(n, m);  // parameter n modified\n  }\n  else {\n    n = global_int;  // value of n modified by global\n  }\n  \n  // ...\n}"
+						"\n#include <stdio.h>\n\nvoid func(int param){\n    // Modifying parameter can cause confusion\n    param = 5;\n    printf(\"%d\\n\", param);\n}"
 					],
 					"general": [
 						""
@@ -4497,6 +4546,10 @@
 		"rules": {
 			"category": "",
 			"mapping": "undefined",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
 			"language": "c",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func} did not end with an else statement.",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}的if-else缺少else语句。",
@@ -4845,8 +4898,12 @@
 		"code": "MSR_18_1",
 		"rules": {
 			"category": "",
-			"mapping": "undefined",
-			"language": "c",
+			"mapping": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func} assessed an undefined location with a pointer that went out of bound.",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}使用了越界的指针评估未定义的位置。",
 			"code": "MSR_18_1",
@@ -4856,16 +4913,16 @@
 			"name_cn": "对指针操作数进行算术运算产生的指针应寻址与该指针操作数相同的数组中的元素",
 			"severity": "H",
 			"compliance": "R",
-			"desc_en": "The program assesses an undefined location with a pointer that is out of bound.",
-			"desc_cn": "程序使用越界的指针评估未定义的位置。",
-			"abstract": "The program assessed an undefined location with a pointer that is out of bound.",
+			"desc_en": "Pointer arithmatic should not cause an array out of bound access",
+			"desc_cn": "指针运算不应导致数组越界访问",
+			"abstract": "Pointer arithmatic should not cause an array out of bound access",
 			"explanation": "Compilers can only determine at compile time whether an array boundary has been exceeded. No checks are done at run-time for invalid array indexing. Using invalid indexing can cause program to have erroneous behaviour.",
-			"abstract_cn": "程序使用越界的指针评估未定义的位置。",
+			"abstract_cn": "指针运算不应导致数组越界访问",
 			"explanation_cn": "编译器只能在编译时确定是否超出了数组边界。 在运行时不检查无效的数组索引。 使用无效的索引会导致程序出现错误行为。",
-			"example_good": "///c:\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}",
+			"example_good": "///c:\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}",
 			"example_bad": "///c:\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to two beyond, undefined\n    int *p = &arr[4];\n}",
-			"details_en": "#### Abstract\nThe program assessed an undefined location with a pointer that is out of bound.\n\n#### Explanation\nCompilers can only determine at compile time whether an array boundary has been exceeded. No checks are done at run-time for invalid array indexing. Using invalid indexing can cause program to have erroneous behaviour.",
-			"details_cn": "#### 概要\n程序使用越界的指针评估未定义的位置。\n\n#### 解释\n编译器只能在编译时确定是否超出了数组边界。 在运行时不检查无效的数组索引。 使用无效的索引会导致程序出现错误行为。",
+			"details_en": "#### Abstract\nPointer arithmatic should not cause an array out of bound access\n\n#### Explanation\nCompilers can only determine at compile time whether an array boundary has been exceeded. No checks are done at run-time for invalid array indexing. Using invalid indexing can cause program to have erroneous behaviour.",
+			"details_cn": "#### 概要\n指针运算不应导致数组越界访问\n\n#### 解释\n编译器只能在编译时确定是否超出了数组边界。 在运行时不检查无效的数组索引。 使用无效的索引会导致程序出现错误行为。",
 			"examples": {
 				"good": {
 					"cpp": [
@@ -4875,7 +4932,7 @@
 						""
 					],
 					"c": [
-						"\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}"
+						"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}"
 					],
 					"general": [
 						""
@@ -4964,7 +5021,10 @@
 		"rules": {
 			"category": "",
 			"mapping": "",
-			"AutoSAR": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
 			"language": "c",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func} use exception handling features declared in <fenv.h>",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}使用了 <fenv.h> 中声明的异常处理特性",
@@ -5082,8 +5142,11 @@
 		"rules": {
 			"category": "",
 			"mapping": "",
-			"AutoSAR": "",
-			"language": "c",
+			"misra_c": "16_6",
+			"misra_cpp": "6-4-8",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "",
 			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func} have less than two switch-clause",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}有少于两个 switch 子句",
 			"code": "MSR_16_6",
@@ -5141,11 +5204,10 @@
 		"rules": {
 			"category": "",
 			"mapping": "",
-			"AutoSAR": "",
 			"misra_c": "",
 			"misra_cpp": "",
-			"GJB5369": "",
-			"GJB8114": "",
+			"gjb5369": "",
+			"gjb8114": "",
 			"language": "",
 			"msg_templ_en": "",
 			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}，在设置之前就读取具有自动存储持续时间的对象的值",
@@ -5197,5 +5259,314 @@
 			}
 		},
 		"id": "1635923801357"
+	},
+	{
+		"name": "Subtraction between pointers should only be applied to pointers that address elements of the same array",
+		"code": "MSR_18_2",
+		"rules": {
+			"category": "",
+			"mapping": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c",
+			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}，pointer subtraction causes an array out of bound access",
+			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}，指针减法导致了数组越界访问",
+			"code": "MSR_18_2",
+			"override": "T",
+			"master_id": "2078",
+			"name": "Subtraction between pointers should only be applied to pointers that address elements of the same array",
+			"name_cn": "指针之间的减法应仅适用于寻址同一数组元素的指针",
+			"compliance": "R",
+			"desc_en": "Pointer subtraction should not cause access violation, such as array out of bound.",
+			"desc_cn": "指针减法不应导致访问冲突，例如数组越界。",
+			"abstract": "Pointer subtraction should not cause access violation, such as array out of bound.",
+			"explanation": "If pointers do not point to elements of the same array or the element one beyond the end of that array, the subtraction between them is undefined behaviour.",
+			"abstract_cn": "指针减法不应导致访问冲突，例如数组越界。",
+			"explanation_cn": "如果指针不指向同一数组的元素或超出该数组末尾的元素，则它们之间的减法是未定义的行为。",
+			"example_good": "",
+			"example_bad": "///c:\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to two beyond\n    int *p1 = &arr[0];\n    int *p2 = &arr[2];\n\n    ptrdiff_t diff;\n    diff = p1 - p2 // undefined\n}",
+			"details_en": "#### Abstract\nPointer subtraction should not cause access violation, such as array out of bound.\n\n#### Explanation\nIf pointers do not point to elements of the same array or the element one beyond the end of that array, the subtraction between them is undefined behaviour.",
+			"details_cn": "#### 概要\n指针减法不应导致访问冲突，例如数组越界。\n\n#### 解释\n如果指针不指向同一数组的元素或超出该数组末尾的元素，则它们之间的减法是未定义的行为。",
+			"examples": {
+				"good": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				},
+				"bad": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to two beyond\n    int *p1 = &arr[0];\n    int *p2 = &arr[2];\n\n    ptrdiff_t diff;\n    diff = p1 - p2 // undefined\n}"
+					],
+					"general": [
+						""
+					]
+				}
+			}
+		},
+		"id": "1637137441796"
+	},
+	{
+		"name": "The address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist",
+		"code": "MSR_18_6",
+		"rules": {
+			"category": "",
+			"mapping": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c",
+			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}，the address of an object with automatic storage is copied to another object that persists after the first object has ceased to exist",
+			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}，具有自动存储的对象的地址被复制到第一个对象不存在后仍然存在的另一个对象",
+			"code": "MSR_18_6",
+			"master_id": "2079",
+			"name": "The address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist",
+			"name_cn": "具有自动存储的对象的地址不应复制到第一个对象不存在后仍然存在的另一个对象",
+			"compliance": "R",
+			"desc_en": "The address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist",
+			"desc_cn": "具有自动存储的对象的地址不应复制到第一个对象不存在后仍然存在的另一个对象",
+			"abstract": "The address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist",
+			"explanation": "When the lifetime of one object expires, its address becomes indeterminate. Then the use of that inderterminate address would result in undefined behaviour.",
+			"abstract_cn": "具有自动存储的对象的地址不应复制到第一个对象不存在后仍然存在的另一个对象",
+			"explanation_cn": "当一个对象的生命周期到期时，其地址变得不确定。因此使用该中间终止地址将导致未定义的行为。",
+			"example_good": "",
+			"example_bad": "",
+			"details_en": "#### Abstract\nThe address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist\n\n#### Explanation\nWhen the lifetime of one object expires, its address becomes indeterminate. Then the use of that inderterminate address would result in undefined behaviour.",
+			"details_cn": "#### 概要\n具有自动存储的对象的地址不应复制到第一个对象不存在后仍然存在的另一个对象\n\n#### 解释\n当一个对象的生命周期到期时，其地址变得不确定。因此使用该中间终止地址将导致未定义的行为。",
+			"examples": {
+				"good": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				},
+				"bad": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				}
+			}
+		},
+		"id": "1637147737612"
+	},
+	{
+		"name": "All resources obtained dynamically by means of Standard Library functions should be released",
+		"code": "MSR_22_1",
+		"rules": {
+			"category": "",
+			"mapping": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c",
+			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}，resources obtained dynamically from Standard library functions are not relaeased.",
+			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}，通过标准库函数动态获取的资源没有被释放",
+			"code": "MSR_22_1",
+			"override": "T",
+			"master_id": "2080",
+			"name": "All resources obtained dynamically by means of Standard Library functions should be released",
+			"name_cn": "所有通过标准库函数动态获取的资源都应该被释放",
+			"compliance": "R",
+			"desc_en": "Resources obtained dynamically from Standard library functions should be relaeased.",
+			"desc_cn": "应释放从标准库函数动态获取的资源。",
+			"abstract": "Resources obtained dynamically from Standard library functions should be relaeased.",
+			"explanation": "It is possible for a failure to occur due to exhaustion of resources if those resources are not explicitly released . Releasing resources as soon as possible reduces the possibility of exhaustion.",
+			"abstract_cn": "应释放从标准库函数动态获取的资源。",
+			"explanation_cn": "如果没有明确释放这些资源，则可能由于资源耗尽而发生故障。 尽快释放资源可以减少耗尽的可能性。",
+			"example_good": "",
+			"example_bad": "",
+			"details_en": "#### Abstract\nResources obtained dynamically from Standard library functions should be relaeased.\n\n#### Explanation\nIt is possible for a failure to occur due to exhaustion of resources if those resources are not explicitly released . Releasing resources as soon as possible reduces the possibility of exhaustion.",
+			"details_cn": "#### 概要\n应释放从标准库函数动态获取的资源。\n\n#### 解释\n如果没有明确释放这些资源，则可能由于资源耗尽而发生故障。 尽快释放资源可以减少耗尽的可能性。",
+			"examples": {
+				"good": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				},
+				"bad": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				}
+			}
+		},
+		"id": "1637149414993"
+	},
+	{
+		"name": "A block of memory should only be freed if it was allocated by Standard Library function",
+		"code": "MSR_22_2",
+		"rules": {
+			"category": "",
+			"mapping": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "c",
+			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}，a block of memory is freed when it was not allocated by Standard Library function",
+			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}，不是由标准库函数分配的内存块被释放",
+			"code": "MSR_22_2",
+			"override": "T",
+			"master_id": "2081",
+			"name": "A block of memory should only be freed if it was allocated by Standard Library function",
+			"name_cn": "内存块仅当由标准库函数分配时才可以被释放",
+			"compliance": "M",
+			"desc_en": "A block of memory should only be freed if it was allocated by Standard Library function",
+			"desc_cn": "内存块仅当由标准库函数分配时才可以被释放",
+			"abstract": "A block of memory should only be freed if it was allocated by Standard Library function",
+			"explanation": "It is undefined behavior to freeing non-allocated memory or freeing the same allocated memory more than one time.",
+			"abstract_cn": "内存块仅当由标准库函数分配时才可以被释放",
+			"explanation_cn": "释放未分配的内存或多次释放相同的分配内存是未定义的行为。",
+			"example_good": "",
+			"example_bad": "",
+			"details_en": "#### Abstract\nA block of memory should only be freed if it was allocated by Standard Library function\n\n#### Explanation\nIt is undefined behavior to freeing non-allocated memory or freeing the same allocated memory more than one time.",
+			"details_cn": "#### 概要\n内存块仅当由标准库函数分配时才可以被释放\n\n#### 解释\n释放未分配的内存或多次释放相同的分配内存是未定义的行为。",
+			"examples": {
+				"good": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				},
+				"bad": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				}
+			}
+		},
+		"id": "1637151548710"
+	},
+	{
+		"name": "There should be no attempt to write to a stream which has been opened as read-only",
+		"code": "MSR_22_4",
+		"rules": {
+			"category": "",
+			"mapping": "",
+			"misra_c": "",
+			"misra_cpp": "",
+			"gjb5369": "",
+			"gjb8114": "",
+			"language": "",
+			"msg_templ_en": "In file ${so.filename}, line ${so.line}, ${so.func}, the stream which is opened as read-only is written to.",
+			"msg_templ_cn": "在${so.filename}，第${so.line}行，函数${so.func}，以只读方式打开的流被写入。",
+			"code": "MSR_22_4",
+			"override": "T",
+			"master_id": "2082",
+			"name": "There should be no attempt to write to a stream which has been opened as read-only",
+			"name_cn": "不应尝试写入已以只读方式打开的流",
+			"compliance": "M",
+			"desc_en": "Read-only stream should not be written to",
+			"desc_cn": "不应写入以只读方式打开的流。",
+			"abstract": "Read-only stream should not be written to",
+			"explanation": "Since the Standard does not specify the behaviour if an attempt is made to write to a read-only stream, writting to a read-only stream is unsafe.",
+			"abstract_cn": "不应写入以只读方式打开的流。",
+			"explanation_cn": "由于标准没有指定尝试写入只读流时的行为，因此写入只读流是不安全的。",
+			"example_good": "",
+			"example_bad": "",
+			"details_en": "#### Abstract\nRead-only stream should not be written to\n\n#### Explanation\nSince the Standard does not specify the behaviour if an attempt is made to write to a read-only stream, writting to a read-only stream is unsafe.",
+			"details_cn": "#### 概要\n不应写入以只读方式打开的流。\n\n#### 解释\n由于标准没有指定尝试写入只读流时的行为，因此写入只读流是不安全的。",
+			"examples": {
+				"good": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				},
+				"bad": {
+					"cpp": [
+						""
+					],
+					"java": [
+						""
+					],
+					"c": [
+						""
+					],
+					"general": [
+						""
+					]
+				}
+			}
+		},
+		"id": "1637198001045"
 	}
 ]

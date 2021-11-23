@@ -1116,24 +1116,24 @@
                                 <input type="text" class="form-control" id="mapping">
                             </div><br>
                             <div class="form group">
-                                <label for="recipient-code" class="control-label">autosar </label>
-                                <input type="text" class="form-control" id="autosar">
+                                <label for="recipient-code" class="control-label">AutoSAR </label>
+                                <input type="text" class="form-control" id="AutoSAR">
                             </div><br>
                             <div class="form group">
-                                <label for="recipient-code" class="control-label">misra_c </label>
+                                <label for="recipient-code" class="control-label">MISRA_c </label>
                                 <input type="text" class="form-control" id="misra_c">
                             </div><br>
                             <div class="form group">
-                                <label for="recipient-code" class="control-label">misra_cpp </label>
+                                <label for="recipient-code" class="control-label">MISRA_cpp </label>
                                 <input type="text" class="form-control" id="misra_cpp">
                             </div><br>
                             <div class="form group">
-                                <label for="recipient-code" class="control-label">gjb5369 </label>
-                                <input type="text" class="form-control" id="gjb5369">
+                                <label for="recipient-code" class="control-label">GJB5369 </label>
+                                <input type="text" class="form-control" id="GJB5369">
                             </div><br>
                             <div class="form group">
-                                <label for="recipient-code" class="control-label">gjb8114 </label>
-                                <input type="text" class="form-control" id="gjb8114">
+                                <label for="recipient-code" class="control-label">GJB8114 </label>
+                                <input type="text" class="form-control" id="GJB8114">
                             </div><br>
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Rule Name (en)</label>
@@ -1335,11 +1335,11 @@
             $("#ids").val('')
             $("#category").val('')
             $("#mapping").val('')
-            $("#autosar").val('')
+            $("#AutoSAR").val('')
             $("#misra_c").val('')
             $("#misra_cpp").val('')
-            $("#gjb5369").val('')
-            $("#gjb8114").val('')
+            $("#GJB5369").val('')
+            $("#GJB8114").val('')
             $("#name").val('')
             $("#name-cn").val('')
             $("#description").val('')
@@ -1373,11 +1373,11 @@
             let ids = $("#ids").val()
             let category = $("#category").val()
             let mapping = $("#mapping").val()
-            let autosar = $("autosar").val()
+            let AutoSAR = $("#AutoSAR").val()
             let misra_c = $("#misra_c").val()
             let misra_cpp = $("#misra_cpp").val()
-            let gjb5369 = $("#gjb5369").val()
-            let gjb8114 = $("#gjb8114").val()
+            let GJB5369 = $("#GJB5369").val()
+            let GJB8114 = $("#GJB8114").val()
             let names = $("#name").val()
             let names_cn = $("#name-cn").val()
             let description = $("#description").val()
@@ -1409,7 +1409,7 @@
                 example_bad: examples_bad, override: override, type: 'add',
                 abstract_cn: abstract_cn, explanation_cn: explanation_cn, name_cn: names_cn,
                 template_cn: template_cn,
-                ids: ids, category:category, mapping: mapping, autosar: autosar, misra_c: misra_c, misra_cpp: misra_cpp, gjb5369: gjb5369, gjb8114: gjb8114,
+                ids: ids, category:category, mapping: mapping, AutoSAR: AutoSAR, misra_c: misra_c, misra_cpp: misra_cpp, GJB5369: GJB5369, GJB8114: GJB8114,
                 description: description, 
                 description_cn: description_cn
             });
@@ -1435,9 +1435,9 @@
                           data-severity='${array.severity}' data-compliance='${array.compliance}' data-likelihood='${array.likelihood}'
                           data-remediation='${array.cost}' data-override='${array.override}'
                           data-isCustom='${array.isCustom}' data-language='${array.language}'
-                          data-id='${array.master_id||""}' data-category='${array.category||""}' data-mapping='${array.mapping||""}' data-autosar='${array.autosar||""}'
-                          data-misra_c='${array.misra_c||""}' data-misra_cpp='${array.misra_cpp||""}'
-                          data-gjb5369='${array.gjb5369||""}' data-gjb8114='${array.gjb8114||""}'
+                          data-id='${array.master_id||""}' data-category='${array.category||""}' data-mapping='${array.mapping||""}' 
+                          data-autosar='${array.AutoSAR||""}' data-misra_c='${array.misra_c||""}' data-misra_cpp='${array.misra_cpp||""}'
+                          data-gjb5369='${array.GJB5369||""}' data-gjb8114='${array.GJB8114||""}'
                           data-explanation='${array.explanation||""}' data-explanation_cn='${array.explanation_cn||""}'> 
                           Edit</span>
                         </div>`
@@ -1530,11 +1530,11 @@
             $("#ids").val($(this).data('id'))
             $("#category").val($(this).data('category'))
             $("#mapping").val($(this).data('mapping'))
-            $("#autosar").val($(this).data('autosar'))
+            $("#AutoSAR").val($(this).data('autosar'))
             $("#misra_c").val($(this).data('misra_c'))
             $("#misra_cpp").val($(this).data('misra_cpp'))
-            $("#gjb5369").val($(this).data('gjb5369'))
-            $("#gjb8114").val($(this).data('gjb8114'))
+            $("#GJB5369").val($(this).data('gjb5369'))
+            $("#GJB8114").val($(this).data('gjb8114'))
             $("#explanation").val($(this).data('explanation'))
             $("#explanation-cn").val($(this).data('explanation_cn'))
             $("#name").val($(this).data('name'))

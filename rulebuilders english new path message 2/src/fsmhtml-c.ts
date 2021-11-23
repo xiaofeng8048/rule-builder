@@ -84,11 +84,11 @@ export class FsmHtmlC {
                             let rules: any = {}
                             rules.category = message.category
                             rules.mapping = message.mapping
-                            rules.autosar = message.autosar
+                            rules.AutoSAR = message.AutoSAR
                             rules.misra_c = message.misra_c
                             rules.misra_cpp = message.misra_cpp
-                            rules.gjb5369 = message.gjb5369
-                            rules.gjb8114 = message.gjb8114
+                            rules.GJB5369 = message.GJB5369
+                            rules.GJB8114 = message.GJB8114
                             rules.language = message.language
                             rules.msg_templ_en = message.template
                             rules.msg_templ_cn = message.template_cn
@@ -572,11 +572,11 @@ export class FsmHtmlC {
                     let dataCopy = { ...this.dataListJson[i].rules };
                     delete dataCopy["name_cn"]
                     delete dataCopy["desc_cn"]
-                    delete dataCopy["autosar"]
+                    delete dataCopy["AutoSAR"]
                     delete dataCopy["misra_c"]
                     delete dataCopy["misra_cpp"]
-                    delete dataCopy["gjb5369"]
-                    delete dataCopy["gjb8114"]
+                    delete dataCopy["GJB5369"]
+                    delete dataCopy["GJB8114"]
                     delete dataCopy["msg_templ_cn"]
                     delete dataCopy["details_cn"]
                     delete dataCopy["abstract"]
@@ -606,11 +606,11 @@ export class FsmHtmlC {
                     let dataCopy2 = { ...this.dataListJson[i].rules };
                     delete dataCopy2["name"]
                     delete dataCopy2["desc_en"]
-                    delete dataCopy2["autosar"]
+                    delete dataCopy2["AutoSAR"]
                     delete dataCopy2["misra_c"]
                     delete dataCopy2["misra_cpp"]
-                    delete dataCopy2["gjb5369"]
-                    delete dataCopy2["gjb8114"]
+                    delete dataCopy2["GJB5369"]
+                    delete dataCopy2["GJB8114"]
                     delete dataCopy2["msg_templ_en"]
                     delete dataCopy2["details_en"]
                     delete dataCopy2["abstract"]
@@ -705,11 +705,11 @@ export class FsmHtmlC {
                     let dataCopy = { ...dataArr[i].rules };
                     delete dataCopy["name_cn"]
                     delete dataCopy["desc_cn"]
-                    delete dataCopy["autosar"]
+                    delete dataCopy["AutoSAR"]
                     delete dataCopy["misra_c"]
                     delete dataCopy["misra_cpp"]
-                    delete dataCopy["gjb5369"]
-                    delete dataCopy["gjb8114"]
+                    delete dataCopy["GJB5369"]
+                    delete dataCopy["GJB8114"]
                     delete dataCopy["msg_templ_cn"]
                     delete dataCopy["details_cn"]
                     delete dataCopy["abstract"]
@@ -738,11 +738,11 @@ export class FsmHtmlC {
                     let dataCopy2 = { ...dataArr[i].rules };
                     delete dataCopy2["name"]
                     delete dataCopy2["desc_en"]
-                    delete dataCopy2["autosar"]
+                    delete dataCopy2["AutoSAR"]
                     delete dataCopy2["misra_c"]
                     delete dataCopy2["misra_cpp"]
-                    delete dataCopy2["gjb5369"]
-                    delete dataCopy2["gjb8114"]
+                    delete dataCopy2["GJB5369"]
+                    delete dataCopy2["GJB8114"]
                     delete dataCopy2["msg_templ_en"]
                     delete dataCopy2["details_en"]
                     delete dataCopy2["abstract"]

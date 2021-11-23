@@ -1,7 +1,7 @@
 [
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "",
 		"code": "MSR_2_3",
 		"master_id": "2001",
@@ -46,8 +46,8 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"language": "",
 		"code": "MSR_2_6",
 		"master_id": "2002",
 		"name": "Unused label in function not allowed",
@@ -2451,7 +2451,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
 		"code": "MSR_21_10",
 		"master_id": "2057",
 		"name": "Time and date functions in stdlib.h should not be used",
@@ -2492,8 +2494,10 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_5_0_1",
 		"master_id": "3001",
 		"name": "MSR_5_0_1",
@@ -2537,8 +2541,10 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_5_0_8",
 		"master_id": "3002",
 		"name": "MSR_5_0_8",
@@ -2583,7 +2589,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_5_0_19",
 		"master_id": "3003",
 		"name": "More than 2 indirections",
@@ -2628,7 +2636,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_8_5_3",
 		"master_id": "3004",
 		"name": "Bad enum initialization",
@@ -2673,7 +2683,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_10_1_3",
 		"master_id": "3005",
 		"name": "Base class has virtual and non-virtual",
@@ -2718,7 +2730,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_12_1_1",
 		"master_id": "3006",
 		"name": "Dynamic type in ctor or dtor",
@@ -2760,7 +2774,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_12_1_2",
 		"master_id": "3007",
 		"name": "ctor must explicitly call ctor for all its immediate base classes",
@@ -2886,7 +2902,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c++",
 		"code": "MSR_10_2_1",
 		"master_id": "3010",
 		"name": "All visible names within an inheritance hierarchy must be unique",
@@ -2970,7 +2988,9 @@
 	{
 		"category": "",
 		"mapping": "undefined",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
 		"code": "MSR_17_8",
 		"master_id": "2059",
 		"name": "A function parameter should not be modified",
@@ -2984,7 +3004,7 @@
 					""
 				],
 				"c": [
-					"\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}\n\n"
+					"\n#include <stdio.h>\n\nvoid func(int param){\n    // Only use param, do not ever modify it by assigning another value\n    printf(\"%d\\n\", param);\n}"
 				],
 				"general": [
 					""
@@ -2998,7 +3018,7 @@
 					""
 				],
 				"c": [
-					"\nextern int func_ret_int(int, int);\n\nint global_int;\n\nvoid bar(int n, int m)\n{\n  if (n > 0) {\n    n += func_ret_int(n, m);  // parameter n modified\n  }\n  else {\n    n = global_int;  // value of n modified by global\n  }\n  \n  // ...\n}"
+					"\n#include <stdio.h>\n\nvoid func(int param){\n    // Modifying parameter can cause confusion\n    param = 5;\n    printf(\"%d\\n\", param);\n}"
 				],
 				"general": [
 					""
@@ -3288,6 +3308,8 @@
 	{
 		"category": "",
 		"mapping": "undefined",
+		"gjb5369": "",
+		"gjb8114": "",
 		"language": "c",
 		"code": "MSR_15_7",
 		"master_id": "2066",
@@ -3539,8 +3561,10 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"language": "c",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
 		"code": "MSR_18_1",
 		"master_id": "2072",
 		"name": "A pointer resulting from arithmetic on a pointer operand shall address an element of the same array as that pointer operand",
@@ -3555,7 +3579,7 @@
 					""
 				],
 				"c": [
-					"\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}"
+					"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to one beyond only, still defined\n    int *p = &arr[3];\n}"
 				],
 				"general": [
 					""
@@ -3577,8 +3601,8 @@
 			}
 		},
 		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func} assessed an undefined location with a pointer that went out of bound.",
-		"desc": "The program assesses an undefined location with a pointer that is out of bound.",
-		"details": "#### Abstract\nThe program assessed an undefined location with a pointer that is out of bound.\n\n#### Explanation\nCompilers can only determine at compile time whether an array boundary has been exceeded. No checks are done at run-time for invalid array indexing. Using invalid indexing can cause program to have erroneous behaviour."
+		"desc": "Pointer arithmatic should not cause an array out of bound access",
+		"details": "#### Abstract\nPointer arithmatic should not cause an array out of bound access\n\n#### Explanation\nCompilers can only determine at compile time whether an array boundary has been exceeded. No checks are done at run-time for invalid array indexing. Using invalid indexing can cause program to have erroneous behaviour."
 	},
 	{
 		"category": "",
@@ -3625,6 +3649,8 @@
 	{
 		"category": "",
 		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
 		"language": "c",
 		"code": "MSR_21_12",
 		"master_id": "2074",
@@ -3709,7 +3735,9 @@
 	{
 		"category": "",
 		"mapping": "",
-		"language": "c",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
 		"code": "MSR_16_6",
 		"master_id": "2076",
 		"name": "Every switch statement should have at least two switch-clauses",
@@ -3751,6 +3779,8 @@
 	{
 		"category": "",
 		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
 		"language": "",
 		"code": "MSR_9_1",
 		"master_id": "2077",
@@ -3789,5 +3819,225 @@
 		"msg_templ": "",
 		"desc": "Local variables should be initialized before being read",
 		"details": "#### Abstract\nLocal variables should be initialized before being read\n\n#### Explanation\nObjects with static storage duration are automatically initialized to zero unless initialized explicitly. Objects with atutomatic storage duration are not automatically initialized so that they can have indeterminate values."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_18_2",
+		"master_id": "2078",
+		"name": "Subtraction between pointers should only be applied to pointers that address elements of the same array",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					"\nvoid func(){\n    int arr[3] = {0, 1, 2};\n\n    // Points to two beyond\n    int *p1 = &arr[0];\n    int *p2 = &arr[2];\n\n    ptrdiff_t diff;\n    diff = p1 - p2 // undefined\n}"
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}，pointer subtraction causes an array out of bound access",
+		"desc": "Pointer subtraction should not cause access violation, such as array out of bound.",
+		"details": "#### Abstract\nPointer subtraction should not cause access violation, such as array out of bound.\n\n#### Explanation\nIf pointers do not point to elements of the same array or the element one beyond the end of that array, the subtraction between them is undefined behaviour."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_18_6",
+		"master_id": "2079",
+		"name": "The address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}，the address of an object with automatic storage is copied to another object that persists after the first object has ceased to exist",
+		"desc": "The address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist",
+		"details": "#### Abstract\nThe address of an object with automatic storage should not be copied to another object that persists after the first object has ceased to exist\n\n#### Explanation\nWhen the lifetime of one object expires, its address becomes indeterminate. Then the use of that inderterminate address would result in undefined behaviour."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_22_1",
+		"master_id": "2080",
+		"name": "All resources obtained dynamically by means of Standard Library functions should be released",
+		"compliance": "R",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}，resources obtained dynamically from Standard library functions are not relaeased.",
+		"desc": "Resources obtained dynamically from Standard library functions should be relaeased.",
+		"details": "#### Abstract\nResources obtained dynamically from Standard library functions should be relaeased.\n\n#### Explanation\nIt is possible for a failure to occur due to exhaustion of resources if those resources are not explicitly released . Releasing resources as soon as possible reduces the possibility of exhaustion."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "c",
+		"code": "MSR_22_2",
+		"master_id": "2081",
+		"name": "A block of memory should only be freed if it was allocated by Standard Library function",
+		"compliance": "M",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}，a block of memory is freed when it was not allocated by Standard Library function",
+		"desc": "A block of memory should only be freed if it was allocated by Standard Library function",
+		"details": "#### Abstract\nA block of memory should only be freed if it was allocated by Standard Library function\n\n#### Explanation\nIt is undefined behavior to freeing non-allocated memory or freeing the same allocated memory more than one time."
+	},
+	{
+		"category": "",
+		"mapping": "",
+		"gjb5369": "",
+		"gjb8114": "",
+		"language": "",
+		"code": "MSR_22_4",
+		"master_id": "2082",
+		"name": "There should be no attempt to write to a stream which has been opened as read-only",
+		"compliance": "M",
+		"examples": {
+			"good": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			},
+			"bad": {
+				"cpp": [
+					""
+				],
+				"java": [
+					""
+				],
+				"c": [
+					""
+				],
+				"general": [
+					""
+				]
+			}
+		},
+		"msg_templ": "In file ${so.filename}, line ${so.line}, ${so.func}, the stream which is opened as read-only is written to.",
+		"desc": "Read-only stream should not be written to",
+		"details": "#### Abstract\nRead-only stream should not be written to\n\n#### Explanation\nSince the Standard does not specify the behaviour if an attempt is made to write to a read-only stream, writting to a read-only stream is unsafe."
 	}
 ]
