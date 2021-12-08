@@ -1518,6 +1518,7 @@
 
         //编辑urule 
         $("#urule").on("click", ".edit-li", function () {
+            console.log(11111)
             isEdit = ''
             
             $('input:radio[name="isCustom"]').prop('checked', false);
@@ -1525,7 +1526,7 @@
                 $("#code").val(($(this).data('code')).substring(3))
             } else {
                 $("#code").val(($(this).data('code')))
-            }4
+            }
 
             $("#ids").val($(this).data('id'))
             $("#category").val($(this).data('category'))
@@ -1547,6 +1548,30 @@
             $("#bad").val($(this).data('example_bad'))
             $("#template").val($(this).data('msg_templ_en'))
             $("#template_cn").val($(this).data('msg_templ_cn'))
+            let language = $(this).data('language') || '';
+            let languages = language.split(', ');
+            $('input:checkbox[name="language"]').prop('checked', false);
+            for(var i = 0; i < languages.length; i++) {
+                console.log(11, languages[i]);
+                switch(languages[i]){
+                case 'java':
+                    $("#Java").prop("checked", true);
+                    console.log(12, languages[i]);
+                    break;
+                case 'c':
+                    $("#C").prop("checked", true);
+                    console.log(13, languages[i]);
+                    break;
+                case 'c++':
+                    $("#C++").prop("checked", true);
+                    console.log(14, languages[i]);
+                    break;
+                case 'general':
+                    $("#General").prop("checked", true);
+                    console.log(15, languages[i]);
+                    break;
+                }
+            }
 
             if ($(this).data("override") === 'T') {
                 $("#yes").prop("checked", true);
@@ -1606,8 +1631,8 @@
 
             $('#exampleModal').modal('show')
             isEdit = $(this).attr('ids')
-            $("#contentInp").val(ruleName)
-            $("#idTxt").val(remark)
+            //$("#contentInp").val(ruleName)
+            //$("#idTxt").val(remark)
         });
 
         $("#ruleList").on("click", ".del-li", function () {
@@ -1619,6 +1644,7 @@
 
         //编辑
         $("#ruleList").on("click", ".edit-li", function () {
+            console.log(22222)
             let i = $(this).index();
             let ruleName = $(this).attr('ruleName')
             let ruleList = $(this).attr('ruleList')

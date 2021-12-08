@@ -2,7 +2,7 @@
 	{
 		"category": "",
 		"mapping": "",
-		"language": "",
+		"language": "c",
 		"code": "MSR_2_3",
 		"master_id": "2001",
 		"name": "MSR_2_3",
@@ -47,7 +47,7 @@
 	{
 		"category": "",
 		"mapping": "",
-		"language": "",
+		"language": "c",
 		"code": "MSR_2_6",
 		"master_id": "2002",
 		"name": "Unused label in function not allowed",
@@ -91,7 +91,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_2_7",
 		"master_id": "2003",
@@ -136,7 +136,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_5_1",
 		"master_id": "2004",
@@ -181,7 +181,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_5_2",
 		"master_id": "2005",
@@ -226,7 +226,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_5_3",
 		"master_id": "2006",
@@ -271,7 +271,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_5_6",
 		"master_id": "2007",
@@ -316,7 +316,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_5_7",
 		"master_id": "2008",
@@ -361,7 +361,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_6_1",
 		"master_id": "2009",
@@ -406,7 +406,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_6_2",
 		"master_id": "2010",
@@ -451,7 +451,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_7_4",
 		"master_id": "2011",
@@ -496,7 +496,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_4",
 		"master_id": "2012",
@@ -541,7 +541,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_8",
 		"master_id": "2013",
@@ -586,7 +586,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_9",
 		"master_id": "2014",
@@ -631,7 +631,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_10",
 		"master_id": "2015",
@@ -676,7 +676,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_11",
 		"master_id": "2016",
@@ -721,7 +721,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_12",
 		"master_id": "2017",
@@ -766,7 +766,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_13",
 		"master_id": "2018",
@@ -811,7 +811,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_8_14",
 		"master_id": "2019",
@@ -856,7 +856,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_9_3",
 		"master_id": "2020",
@@ -901,7 +901,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_9_4",
 		"master_id": "2021",
@@ -946,7 +946,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_9_5",
 		"master_id": "2022",
@@ -991,7 +991,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_10_3",
 		"master_id": "2023",
@@ -1036,7 +1036,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_10_4",
 		"master_id": "2024",
@@ -1081,7 +1081,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_10_5",
 		"master_id": "2025",
@@ -1126,7 +1126,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_10_6",
 		"master_id": "2026",
@@ -1171,7 +1171,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_10_7",
 		"master_id": "2027",
@@ -1216,7 +1216,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_10_8",
 		"master_id": "2028",
@@ -1261,7 +1261,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_2",
 		"master_id": "2029",
@@ -1306,7 +1306,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_3",
 		"master_id": "2030",
@@ -1351,7 +1351,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_4",
 		"master_id": "2031",
@@ -1396,7 +1396,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_5",
 		"master_id": "2032",
@@ -1441,7 +1441,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_6",
 		"master_id": "2033",
@@ -1486,7 +1486,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_7",
 		"master_id": "2034",
@@ -1531,7 +1531,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_8",
 		"master_id": "2035",
@@ -1576,7 +1576,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_9",
 		"master_id": "2036",
@@ -1621,7 +1621,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_12_2",
 		"master_id": "2037",
@@ -1666,7 +1666,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_12_3",
 		"master_id": "2038",
@@ -1711,7 +1711,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_12_4",
 		"master_id": "2039",
@@ -1756,7 +1756,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_13_1",
 		"master_id": "2040",
@@ -2324,7 +2324,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_21_7",
 		"master_id": "2054",
@@ -2366,7 +2366,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_21_8",
 		"master_id": "2055",
@@ -2450,9 +2450,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_21_10",
 		"master_id": "2057",
@@ -3955,8 +3953,6 @@
 	{
 		"category": "",
 		"mapping": "",
-		"gjb5369": "",
-		"gjb8114": "",
 		"language": "c",
 		"code": "MSR_22_2",
 		"master_id": "2081",
@@ -3999,9 +3995,7 @@
 	{
 		"category": "",
 		"mapping": "",
-		"gjb5369": "",
-		"gjb8114": "",
-		"language": "",
+		"language": "c",
 		"code": "MSR_22_4",
 		"master_id": "2082",
 		"name": "There should be no attempt to write to a stream which has been opened as read-only",
