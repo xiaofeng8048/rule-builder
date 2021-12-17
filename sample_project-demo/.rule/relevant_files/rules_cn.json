@@ -1801,7 +1801,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_13_2",
 		"master_id": "2041",
@@ -1846,7 +1846,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_13_3",
 		"master_id": "2042",
@@ -1891,7 +1891,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_13_4",
 		"master_id": "2043",
@@ -1922,7 +1922,7 @@
 					""
 				],
 				"c": [
-					"\n#include <stdio.h>\n\nvoid func( void );\n\nvoid func( void )\n{\n    bool bool_var;\n    bool_var = true;\n    // the value of assignment opreator used as condition\n    while (bool_var = true)\n    {\n        // some code that change bool_var\n        // ...\n    }\n    \n}"
+					"\nint func(int x, int y)\n{\n  int ret_var;\n  ret_var = 1;\n\n  while (0) {\n    // ...\n    if (x = 0) {  // typical typo interpreted as an assignment\n      ret_var = x = y; // non-compliant\n    }\n  }\n  return ret_var;\n}"
 				],
 				"general": [
 					""
@@ -1936,7 +1936,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_13_5",
 		"master_id": "2044",
@@ -2026,7 +2026,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_18_4",
 		"master_id": "2047",
@@ -2069,7 +2069,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_18_8",
 		"master_id": "2048",
@@ -2114,7 +2114,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_19_2",
 		"master_id": "2049",
@@ -2156,7 +2156,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_21_3",
 		"master_id": "2050",
@@ -2198,7 +2198,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_21_4",
 		"master_id": "2051",
@@ -2240,7 +2240,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_21_5",
 		"master_id": "2052",
@@ -2282,7 +2282,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_21_6",
 		"master_id": "2053",
@@ -2408,7 +2408,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "",
 		"code": "MSR_21_9",
 		"master_id": "2056",
@@ -2586,9 +2586,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c++",
 		"code": "MSR_5_0_19",
 		"master_id": "3003",
@@ -2633,9 +2631,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c++",
 		"code": "MSR_8_5_3",
 		"master_id": "3004",
@@ -2680,9 +2676,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c++",
 		"code": "MSR_10_1_3",
 		"master_id": "3005",
@@ -2727,9 +2721,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c++",
 		"code": "MSR_12_1_1",
 		"master_id": "3006",
@@ -2771,9 +2763,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c++",
 		"code": "MSR_12_1_2",
 		"master_id": "3007",
@@ -2815,7 +2805,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_12_1_3",
 		"master_id": "3008",
@@ -2857,7 +2847,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_11_0_1",
 		"master_id": "3009",
@@ -2899,9 +2889,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c++",
 		"code": "MSR_10_2_1",
 		"master_id": "3010",
@@ -2943,7 +2931,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_17_7",
 		"master_id": "2058",
@@ -2985,10 +2973,8 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
-		"language": "",
+		"mapping": "",
+		"language": "c",
 		"code": "MSR_17_8",
 		"master_id": "2059",
 		"compliance": "A",
@@ -3053,7 +3039,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "",
 		"code": "MSR_14_2",
 		"master_id": "2060",
@@ -3095,7 +3081,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_14_3",
 		"master_id": "2061",
@@ -3137,7 +3123,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_15_1",
 		"master_id": "2062",
@@ -3179,7 +3165,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_15_2",
 		"master_id": "2063",
@@ -3221,7 +3207,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_15_3",
 		"master_id": "2064",
@@ -3305,9 +3291,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
-		"gjb5369": "",
-		"gjb8114": "",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_15_7",
 		"master_id": "2066",
@@ -3349,7 +3333,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_16_5",
 		"master_id": "2067",
@@ -3391,7 +3375,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_16_7",
 		"master_id": "2068",
@@ -3433,7 +3417,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_17_1",
 		"master_id": "2069",
@@ -3475,7 +3459,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_17_2",
 		"master_id": "2070",
@@ -3517,7 +3501,7 @@
 	},
 	{
 		"category": "",
-		"mapping": "undefined",
+		"mapping": "",
 		"language": "c",
 		"code": "MSR_17_5",
 		"master_id": "2071",
